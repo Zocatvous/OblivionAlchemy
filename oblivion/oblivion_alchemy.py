@@ -3,6 +3,8 @@ import pprint
 from plant import PlantFactory
 pd.set_option('display.max_rows',500)
 
+
+
 def construct_df(path_to_csv):
 	ing_df = pd.read_csv(path_to_csv)
 	#process all casing to snake
@@ -91,8 +93,11 @@ class AlchemyFactory:
 
 	def gen_magnitude(self,effect):
 		effect_polarity = self.get_positive_or_negative_effect(effect)
+		Base_Mag = 
 		if effect_polarity == 'negative':
 			Magnitude = Base_Mag * (1 + Calc_Fac*Calcinator_Strength + Ret_Mag_Fac*Retort_Strength - Alem_Fac*Alembic_Strength)
+		else:
+			Magnitude = 
 
 
 	def get_duration(self):
@@ -134,11 +139,10 @@ class AlchemyFactory:
 	def get_magicka_cost(self):
 		return self.effective_alchemy_level + self.calculate_ins_str('pestlemortar_level')*25 
 
-
 		Magnitude = Base_Mag * (1 + Calc_Fac*Calcinator_Strength + Ret_Mag_Fac*Retort_Strength- Alem_Fac*Alembic_Strength)
 		Duration = Base_Dur * (1 + Calc_Fac*Calcinator_Strength + Ret_Dur_Fac*Retort_Strength- Alem_Fac*Alembic_Strength)
 
-	def potion_generator(self):
+	def generate_potion(self):
 		magicka_cost = self.effective_alchemy_lvl + self.calculate_strength()*25
 		magnitude = Base_Mag * (1 + Calc_Fac)
 
