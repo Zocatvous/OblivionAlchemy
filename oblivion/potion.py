@@ -8,3 +8,9 @@ class PotionInstance
 	def __init__(self):
 		self.magnitude = 0
 		self.polarity = 0
+
+class PotionFactory
+	def __init__(self):
+		self.magnitude = 0
+		self.polarity = 0
+

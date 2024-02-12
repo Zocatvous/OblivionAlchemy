@@ -1,6 +1,6 @@
 import pandas as pd
-import pprint
 from plant import PlantFactory
+from potion import PotionFactory
 pd.set_option('display.max_rows',500)
 
 
@@ -20,6 +20,7 @@ class AlchemyFactory:
 		# self.ingredients = construct_df('./processed_flower_effects.csv')
 		self.base_mag_df = construct_df('./effect_base_mag.csv')
 		self.plant_factory = PlantFactory()
+		self.potion_factory = Potion
 		#lists
 		self.duration_only_effects_list = []
 		self.magnitude_only_effects_list = []
@@ -48,7 +49,7 @@ class AlchemyFactory:
 		for col in effect_columns:
 			unique_effects.update(ing_df[col].dropna().unique())
 		unique_effects = {effect.strip() for effect in unique_effects if isinstance(effect, str)}
-		pprint.pprint(unique_effects)
+		# pprint.pprint(unique_effects)
 		print(type(unique_effects))
 		return list(unique_effects)
 
