@@ -4,7 +4,9 @@ from discord import Intents
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+
+
+#load_dotenv()
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
 
 
@@ -36,9 +38,11 @@ async def on_message(message):
 	if message.content.lower() == 'hello':
 		await message.channel.send(f'Hello! {client.user}')
 
-
-client.run(bot_token)
-
+print(f'bot token is {bot_token}')
+try:
+	client.run(bot_token)
+except Exception as e:
+	print(f'some issue {e}')
 
 
 
