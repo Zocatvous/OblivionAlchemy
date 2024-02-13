@@ -1,26 +1,31 @@
 import discord
 from discord.ext import commands
 from discord import Intents
-
 from dotenv import load_dotenv
 import os
 
+
+load_dotenv()
 intents = Intents.default()
 intents.messages = True
 intents.guilds = True
+bot_token = os.getenv('DISCORD_BOT_TOKEN')
 
+client = discord.Client()
+
+
+@client.event
+async def on_ready():
+	print(f'Logged in as {bot.user.name} checkidy check')
 
 # Load environment variables from .env file
-load_dotenv()
-bot_token = os.getenv('DISCORD_BOT_TOKEN')
+
 
 # Create a bot instance
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Event listener for when the bot has switched from offline to online.
-@bot.event
-async def on_ready():
-	print(f'Logged in as {bot.user.name}')
+
 
 
 @bot.event
@@ -40,7 +45,7 @@ async def on_message(message):
 #	 await ctx.send('Hello!')
 
 # Replace 'YOUR_BOT_TOKEN_HERE' with your bot's token
-bot.run(bot_token)
+client.run(bot_token)
 
 
 
