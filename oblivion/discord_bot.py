@@ -15,7 +15,7 @@ load_dotenv()
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
 
 # Create a bot instance
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Event listener for when the bot has switched from offline to online.
 @bot.event
