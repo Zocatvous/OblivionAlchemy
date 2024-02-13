@@ -4,7 +4,7 @@ from discord import Intents
 from dotenv import load_dotenv
 import os
 
-#load_dotenv()
+load_dotenv()
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
 
 
@@ -22,7 +22,7 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
 	try:
-		print(f'Logged in as {client.user.name} checkidy check')
+		print(f'Logged in as {client.user.name}')
 	except Exception as e:
 		print(f'ISSUE: {e}')
 
@@ -36,11 +36,9 @@ async def on_message(message):
 	if message.content.lower() == 'hello':
 		await message.channel.send(f'Hello! {client.user}')
 
-print(f'bot token is {bot_token}')
-try:
-	client.run(bot_token)
-except Exception as e:
-	print(f'some issue {e}')
+
+client.run(bot_token)
+
 
 
 
