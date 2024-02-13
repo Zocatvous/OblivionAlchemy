@@ -4,48 +4,41 @@ from discord import Intents
 from dotenv import load_dotenv
 import os
 
-
 load_dotenv()
-intents = Intents.default()
-intents.messages = True
-intents.guilds = True
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
 
-client = discord.Client()
+
+# try:
+intents = Intents.default()
+intents.messages = True
+intents.message_content = True
+intents.guilds = True
+intents.guild_messages = True  # Enable guild messages
+
+
+client = discord.Client(intents=intents)
 
 
 @client.event
 async def on_ready():
-	print(f'Logged in as {bot.user.name} checkidy check')
+	try:
+		print(f'Logged in as {client.user.name} checkidy check')
+	except Exception as e:
+		print(f'ISSUE: {e}')
 
-# Load environment variables from .env file
-
-
-# Create a bot instance
-bot = commands.Bot(command_prefix='!', intents=intents)
-
-# Event listener for when the bot has switched from offline to online.
-
-
-
-@bot.event
+@client.event
 async def on_message(message):
 	# Prevent bot from responding to its own messages
-	if message.author == bot.user:
+	if message.author == client.user:
 		return
 
 	# A simple command that responds when someone types "hello"
 	if message.content.lower() == 'hello':
-		await message.channel.send('Hello!')
+		await message.channel.send(f'Hello! {client.user}')
 
 
-# A simple command that responds with 'Hello!' when someone types '!hello'
-# @bot.command()
-# async def hello(ctx):
-#	 await ctx.send('Hello!')
-
-# Replace 'YOUR_BOT_TOKEN_HERE' with your bot's token
 client.run(bot_token)
+
 
 
 
