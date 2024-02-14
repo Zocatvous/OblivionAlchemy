@@ -1,4 +1,4 @@
-This is my attempt at creating a fun discord bot with the ability to craft potions like in the Bethesda Videogame Elder Scrolls IV: Oblivion.
+This is my attempt at creating a fun discord bot with the ability to craft potions similiar to the system in the Bethesda Videogame Elder Scrolls IV: Oblivion.
 
 I love that potioncrafting system and I want to bring it wherever I go. 
 
