@@ -55,8 +55,8 @@ async def pick_random_plant(ctx):
 	try:
 		plant_factory = PlantFactory()
 		plt = plant_factory.get_random_plant()
-		print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]}')
-		plt_name = plt[0]
+		print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
+		plt_name = upper(plt[0])
 		plt_effect_1 = plt[1]
 		plt_effect_2 = plt[2]
 		plt_effect_3 = plt[3]
@@ -73,11 +73,15 @@ async def pick_random_plant(ctx):
 		# embed.add_field(name=plt_effect_3, value='Silence', inline=False)
 		# embed.add_field(name=plt_effect_4, value='Light', inline=False)
 
-		embed.add_field(name=plt_effect_1, inline=False)
-		embed.add_field(name=plt_effect_2, inline=False)
-		embed.add_field(name=plt_effect_3, inline=False)
-		embed.add_field(name=plt_effect_4, inline=False)
+		# embed.add_field(name=plt_effect_1, inline=False)
+		# embed.add_field(name=plt_effect_2, inline=False)
+		# embed.add_field(name=plt_effect_3, inline=False)
+		# embed.add_field(name=plt_effect_4, inline=False)
 
+
+		effects_list = [f"{plt_effect1}",f"{plt_effect2}",f"{plt_effect3}",	f"{plt_effect4}"]
+		effects_str = '\n'.join(effects_list)
+		embed.add_field(name="Effects", value=effects_str, inline=False)
 		await ctx.send(embed=embed)
 	except Exception as e:
 		print(e)

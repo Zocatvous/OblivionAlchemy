@@ -13,6 +13,11 @@ class PlantFactory:
 	def __init__(self):
 		self.plant_df =construct_df('./processed_flower_effects.csv')
 
+
+
+	def pretty_string(self, plant_string):
+		return plant_string.replace('_', ' ').title()
+
 	def get_plants(self, *plant_names: str):
 		plant_names_list = list(plant_names)  
 
@@ -31,6 +36,9 @@ class PlantFactory:
 
 	def get_random_plant(self):
 		plant=self.plant_df.sample(n=1).iloc[0]
+		pretty_name = self.pretty_string(plant[0])
+		for col in plant.index:
+			plant[col] = self.pretty_string(str(plant[col]))
 		return plant
 # x = PlantFactory()
 # print(x.get_random_plant())
