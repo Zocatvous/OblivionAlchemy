@@ -41,6 +41,9 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # 	if message.content.lower() == 'hello':
 # 		await message.channel.send(f'Hello! {client.user}')
 
+
+
+
 @bot.command(aliases=['hello'])
 async def greet(ctx):
 	await ctx.send("Hello!")
@@ -52,7 +55,7 @@ async def pick_random_plant(ctx):
 	try:
 		plant_factory = PlantFactory()
 		plt = plant_factory.get_random_plant()
-		print(f'plant0:{plt[1]} plant1:{pl1[1]} plant2:{pl1[2]} plant3:{plt[3]}')
+		print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]}')
 		plt_name = plt[0]
 		plt_effect_1 = plt[1]
 		plt_effect_2 = plt[2]
