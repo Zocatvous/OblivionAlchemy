@@ -49,21 +49,24 @@ async def greet(ctx):
 @bot.command(aliases=['pick'])
 async def pick_random_plant(message):
 	# if message.content == 'pick':
-	plant_factory = PlantFactory()
-	plt = plant_factory.get_random_plant()
-	plt_name = plt[0]
+	try:
+		plant_factory = PlantFactory()
+		plt = plant_factory.get_random_plant()
+		plt_name = plt[0]
 
-	embed = discord.Embed(
-		title=f'{plt.name}',
-		description='Need to put text here about the flower desciption - maybe more if you roll well',  # Description or the main text content
-		color=discord.Color.blue()  # Color of the side strip of the embed
-	)
-	embed.set_image(url='https://en.uesp.net/wiki/File:OB-icon-ingredient-Arrowroot.png')
-	embed.add_field(name='Effect 1', value='Restore Strength', inline=False)
-	embed.add_field(name='Effect 2', value='Water Breathing', inline=False)
-	embed.add_field(name='Effect 3', value='Silence', inline=False)
-	embed.add_field(name='Effect 4', value='Light', inline=False)
-	await ctx.send(embed=embed)
+		embed = discord.Embed(
+			title=f'{plt.name}',
+			description='Need to put text here about the flower desciption - maybe more if you roll well',  # Description or the main text content
+			color=discord.Color.blue()  # Color of the side strip of the embed
+		)
+		embed.set_image(url='https://en.uesp.net/wiki/File:OB-icon-ingredient-Arrowroot.png')
+		embed.add_field(name='Effect 1', value='Restore Strength', inline=False)
+		embed.add_field(name='Effect 2', value='Water Breathing', inline=False)
+		embed.add_field(name='Effect 3', value='Silence', inline=False)
+		embed.add_field(name='Effect 4', value='Light', inline=False)
+		await ctx.send(embed=embed)
+	except Exception as e
+		print(e)
 		#await message.channel.send(embed=embed)
 
 # client.run(bot_token)
