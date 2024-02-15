@@ -52,18 +52,29 @@ async def pick_random_plant(ctx):
 	try:
 		plant_factory = PlantFactory()
 		plt = plant_factory.get_random_plant()
+		print(f'plant0:{plt[1]} plant1:{pl1[1]} plant2:{pl1[2]} plant3:{plt[3]}')
 		plt_name = plt[0]
+		plt_effect_1 = plt[1]
+		plt_effect_2 = plt[2]
+		plt_effect_3 = plt[3]
+		plt_effect_4 = plt[4]
 
 		embed = discord.Embed(
-			title=f'{plt.name}',
+			title=f'Picked: {plt_name}',
 			description='Need to put text here about the flower desciption - maybe more if you roll well',  # Description or the main text content
-			color=discord.Color.blue()  # Color of the side strip of the embed
+			color=discord.Color.green()  # Color of the side strip of the embed
 		)
 		embed.set_image(url='https://en.uesp.net/wiki/File:OB-icon-ingredient-Arrowroot.png')
-		embed.add_field(name='Effect 1', value='Restore Strength', inline=False)
-		embed.add_field(name='Effect 2', value='Water Breathing', inline=False)
-		embed.add_field(name='Effect 3', value='Silence', inline=False)
-		embed.add_field(name='Effect 4', value='Light', inline=False)
+		# embed.add_field(name=plt_effect_1, value='Restore Strength', inline=False)
+		# embed.add_field(name=plt_effect_2, value='Water Breathing', inline=False)
+		# embed.add_field(name=plt_effect_3, value='Silence', inline=False)
+		# embed.add_field(name=plt_effect_4, value='Light', inline=False)
+
+		embed.add_field(name=plt_effect_1, inline=False)
+		embed.add_field(name=plt_effect_2, inline=False)
+		embed.add_field(name=plt_effect_3, inline=False)
+		embed.add_field(name=plt_effect_4, inline=False)
+
 		await ctx.send(embed=embed)
 	except Exception as e:
 		print(e)
