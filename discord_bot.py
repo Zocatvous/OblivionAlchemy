@@ -65,7 +65,7 @@ async def pick_random_plant(ctx):
 		embed.add_field(name='Effect 3', value='Silence', inline=False)
 		embed.add_field(name='Effect 4', value='Light', inline=False)
 		await ctx.send(embed=embed)
-	except Exception as e
+	except Exception as e:
 		print(e)
 		#await message.channel.send(embed=embed)
 
