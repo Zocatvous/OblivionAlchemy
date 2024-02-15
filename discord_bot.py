@@ -56,7 +56,7 @@ async def pick_random_plant(ctx):
 		plant_factory = PlantFactory()
 		plt = plant_factory.get_random_plant()
 		print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
-		plt_name = upper(plt[0])
+		plt_name = plt[0]
 		plt_effect_1 = plt[1]
 		plt_effect_2 = plt[2]
 		plt_effect_3 = plt[3]
