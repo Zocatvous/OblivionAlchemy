@@ -41,11 +41,11 @@ async def on_message(message):
 	if message.content.lower() == 'hello':
 		await message.channel.send(f'Hello! {client.user}')
 
-@client.event
+@client.command()
 async def retrieve_random_plant(message):
 	if message.author == client.user:
 		return
-	if message.content.lower == '!pick':
+	if message.content == 'pick':
 		plant_factory = PlantFactory()
 		plt = plant_factory.get_random_plant()
 		plt_name = plt[0]

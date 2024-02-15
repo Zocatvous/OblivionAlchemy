@@ -32,6 +32,6 @@ class PlantFactory:
 	def get_random_plant(self):
 		plant=self.plant_df.sample(n=1).iloc[0]
 		return plant
-x = PlantFactory()
-print(x.get_random_plant())
+# x = PlantFactory()
+# print(x.get_random_plant())
 # print(x.get_plants('carrot','corn','mandrake_root'))
