@@ -46,7 +46,6 @@ async def greet(ctx):
 	await ctx.send("Hello!")
 
 
-
 @bot.command(aliases=['pick'])
 async def pick_random_plant(message):
 	# if message.content == 'pick':
