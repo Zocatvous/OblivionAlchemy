@@ -1,5 +1,6 @@
 from typing import Union, List
 import pandas as pd
+import random
 
 def construct_df(path_to_csv):
 	ing_df = pd.read_csv(path_to_csv)
@@ -28,5 +29,9 @@ class PlantFactory:
 				result_df = pd.concat([result_df, pltdf])
 		return result_df
 
-# x = PlantFactory()
+	def get_random_plant(self):
+		plant=self.plant_df.sample(n=1).iloc[0]
+		return plant
+x = PlantFactory()
+print(x.get_random_plant())
 # print(x.get_plants('carrot','corn','mandrake_root'))
