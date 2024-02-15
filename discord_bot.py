@@ -24,22 +24,22 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 #client = discord.Client(intents=intents)
 
 
-@client.event
-async def on_ready():
-	try:
-		print(f'{client.user.name} Online')
-	except Exception as e:
-		print(f'ISSUE: {e}')
+# @client.event
+# async def on_ready():
+# 	try:
+# 		print(f'{client.user.name} Online')
+# 	except Exception as e:
+# 		print(f'ISSUE: {e}')
 
-@client.event
-async def on_message(message):
-	# Prevent bot from responding to its own messages
-	if message.author == client.user:
-		return
+# @client.event
+# async def on_message(message):
+# 	# Prevent bot from responding to its own messages
+# 	if message.author == client.user:
+# 		return
 
-	# A simple command that responds when someone types "hello"
-	if message.content.lower() == 'hello':
-		await message.channel.send(f'Hello! {client.user}')
+# 	# A simple command that responds when someone types "hello"
+# 	if message.content.lower() == 'hello':
+# 		await message.channel.send(f'Hello! {client.user}')
 
 @bot.command(aliases=['hello'])
 async def greet(ctx):
