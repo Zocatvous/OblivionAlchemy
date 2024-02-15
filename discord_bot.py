@@ -67,6 +67,7 @@ async def pick_random_plant(ctx):
 		await ctx.send(embed=embed)
 	except Exception as e:
 		print(e)
+		pass
 		#await message.channel.send(embed=embed)
 
 # client.run(bot_token)
