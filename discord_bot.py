@@ -20,7 +20,7 @@ intents.message_content = True
 intents.guilds = True
 intents.guild_messages = True  # Enable guild messages
 
-
+bot = commands.Bot(command_prefix='!', intents=intents)
 client = discord.Client(intents=intents)
 
 
@@ -41,7 +41,7 @@ async def on_message(message):
 	if message.content.lower() == 'hello':
 		await message.channel.send(f'Hello! {client.user}')
 
-@client.command()
+@bot.command()
 async def retrieve_random_plant(message):
 	if message.author == client.user:
 		return
@@ -60,9 +60,11 @@ async def retrieve_random_plant(message):
 		embed.add_field(name='Effect 2', value='Water Breathing', inline=False)
 		embed.add_field(name='Effect 3', value='Silence', inline=False)
 		embed.add_field(name='Effect 4', value='Light', inline=False)
-		await message.channel.send(embed=embed)
+		await ctx.send(embed=embed)
+		#await message.channel.send(embed=embed)
 
 client.run(bot_token)
+bot.run(bot_token)
 
 
 
