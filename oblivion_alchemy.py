@@ -199,23 +199,20 @@ class AlchemyFactory:
 
 
 #x = AlchemyFactory().get_effects_from_ingredients(['Sweetcake','Apple'])
-player=Player()
-Alchemy = AlchemyFactory(player=player)
-plant_df = Alchemy.plant_factory.get_plants('corn','carrot','mandrake_root')
-effects = Alchemy.find_common_effects_between_plants(plant_df)
+# player=Player()
+# Alchemy = AlchemyFactory(player=player)
+# plant_df = Alchemy.plant_factory.get_plants('corn','carrot','mandrake_root')
+# effects = Alchemy.find_common_effects_between_plants(plant_df)
 
-1_positive_effects = ['resist_paralysis']
-2_positive_effects = ['resist_fire','resist_frost']
-3_positive_effects = ['resist_fire','resist_frost','fortify_willpower']
-4_positive_effects = ['fire_shield','frost_shield','fortify_luck','fortify_magicka']
+# 1_positive_effects = ['resist_paralysis']
+# 2_positive_effects = ['resist_fire','resist_frost']
+# 3_positive_effects = ['resist_fire','resist_frost','fortify_willpower']
+# 4_positive_effects = ['fire_shield','frost_shield','fortify_luck','fortify_magicka']
 
-duration_only_positive_effects = ['night-eye']
-duration_only_negative_effects = ['paralyze']
+# duration_only_positive_effects = ['night-eye']
+# duration_only_negative_effects = ['paralyze']
 
-1_positive_1_neg_effects = ['resist_fire','paralyze']
-3_positive_1_neg_effects = ['resist_fire','resist_frost','fortify_willpower','fire_damage']
+# 1_positive_1_neg_effects = ['resist_fire','paralyze']
+# 3_positive_1_neg_effects = ['resist_fire','resist_frost','fortify_willpower','fire_damage']
 
-
-
-
-Alchemy.generate_magnitude(effects)
+# Alchemy.generate_magnitude(effects)
