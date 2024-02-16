@@ -107,7 +107,6 @@ class AlchemyFactory:
 		else:
 			raise Exception(f"Incorrect Insturment Level Given you asked for {thing} must be one of the class instance arguments")
 
-
 	def generate_magnitude(self, common_effects):
 		if not common_effects:
 			raise ValueError('common_effects cannot be an empty list')

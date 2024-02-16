@@ -43,10 +43,19 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 
 
+# Assuming you have a command to list emojis
+@bot.command(aliases=['emojis'])
+async def list_emojis(ctx):
+    emojis = ctx.guild.emojis  # Gets a list of emojis from the guild where the command was called
+    for emoji in emojis:
+        await ctx.send(f"{emoji} -> {emoji.id}")  # Sends each emoji's representation and its ID
 
 @bot.command(aliases=['hello'])
 async def greet(ctx):
 	await ctx.send("Hello!")
+
+
+
 
 
 @bot.command(aliases=['pick'])
