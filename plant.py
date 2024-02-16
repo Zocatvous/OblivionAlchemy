@@ -13,9 +13,12 @@ class PlantFactory:
 	def __init__(self):
 		self.plant_df =construct_df('./processed_flower_effects.csv')
 
+	def _convert_to_snake_case(self):
+		for column in self.plant_df.columns:
+			self.plant_df[column] = self.plant_df[column].str.lower().str.replace(' ', '_').str.replace(r'(?<!^)(?=[A-Z])', '_', regex=True)
+		self.plant_df.to_csv('./processed_flower_effects.csv', index=False)
 
-
-	def pretty_string(self, plant_string):
+	def _pretty_string(self, plant_string):
 		return plant_string.replace('_', ' ').title()
 
 	def get_plants(self, *plant_names: str):
@@ -38,8 +41,8 @@ class PlantFactory:
 		plant=self.plant_df.sample(n=1).iloc[0]
 		pretty_name = self.pretty_string(plant[0])
 		for col in plant.index:
-			plant[col] = self.pretty_string(str(plant[col]))
+			plant[col] = self._pretty_string(str(plant[col]))
 		return plant
-# x = PlantFactory()
+
 # print(x.get_random_plant())
 # print(x.get_plants('carrot','corn','mandrake_root'))
