@@ -63,7 +63,7 @@ async def pick_random_plant(ctx):
 	plt_effect_4 = plt[4]
 
 	embed = discord.Embed(
-		title=f'Picked: {plt_name}',
+		title=f'{plt_name}',
 		description='Need to put text here about the flower desciption - maybe more if you roll well',  # Description or the main text content
 		color=discord.Color.green()  # Color of the side strip of the embed
 	)
