@@ -18,6 +18,27 @@ intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+class PickPlantButton(View):
+    def __init__(self, plant_factory):
+        super().__init__()
+        self.plant_factory = PlantFactory()
+
+    @discord.ui.button(label="Pick", style=ButtonStyle.green, custom_id="pick_plant")
+    async def pick_plant(self, interaction: discord.Interaction, button: Button):
+        plt = self.plant_factory.get_random_plant()
+        plt_name = pretty_string(plt[0])
+        plt_effects = [f'{discord.utils.get(interaction.guild.emojis, name=emojimap[plt[i]])} {pretty_string(plt[i])}' for i in range(1, 4)]
+        effects_str = '\n'.join(plt_effects)
+        
+        embed = Embed(title=plt_name, description='Need to put text here about the flower desciption - maybe more if you roll well', color=discord.Color.green())
+        embed.add_field(name="Effects", value=effects_str, inline=False)
+        
+        await interaction.response.edit_message(content="Here's your random plant:", embed=embed, view=self)
+
+
+
+
+
 @bot.command(aliases=['emojis'])
 async def list_emojis(ctx):
 	emojis = ctx.guild.emojis  # Gets a list of emojis from the guild where the command was called
@@ -31,8 +52,9 @@ async def greet(ctx):
 @bot.command(aliases=['pick'])
 async def pick_random_plant(ctx):
 	plant_factory = PlantFactory()
+	player = None
 	plt = plant_factory.get_random_plant()
-	print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
+	print(f'{plt[0]} {plt[1]} {plt[2]} {plt[3]} {plt[4]}')
 	plt_name = pretty_string(plt[0])
 	plt_effect_1 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[1]])} {pretty_string(plt[1])}'
 	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[2]])} {pretty_string(plt[2])}'
@@ -45,16 +67,6 @@ async def pick_random_plant(ctx):
 		color=discord.Color.green()  # Color of the side strip of the embed
 	)
 	embed.set_image(url='https://en.uesp.net/wiki/File:OB-icon-ingredient-Arrowroot.png')
-	# embed.add_field(name=plt_effect_1, value='Restore Strength', inline=False)
-	# embed.add_field(name=plt_effect_2, value='Water Breathing', inline=False)
-	# embed.add_field(name=plt_effect_3, value='Silence', inline=False)
-	# embed.add_field(name=plt_effect_4, value='Light', inline=False)
-
-	# embed.add_field(name=plt_effect_1, inline=False)
-	# embed.add_field(name=plt_effect_2, inline=False)
-	# embed.add_field(name=plt_effect_3, inline=False)
-	# embed.add_field(name=plt_effect_4, inline=False)
-
 
 	effects_list = [f"{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",	f"{plt_effect_4}"]
 	effects_str = '\n'.join(effects_list)

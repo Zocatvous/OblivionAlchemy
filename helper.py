@@ -16,6 +16,7 @@ emojimap = {
 'burden':'burden',
 'frost_damage':'frost',
 'shock_damage':'shock',
+'feather':'feather',
 'fire_damage':'fire',
 'shield':'shield',
 'resist_paralysis':'resist_element',
