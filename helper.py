@@ -1,7 +1,7 @@
 emojimap = {
 'cure_poison':'cure',
-'cure_disease':'cure'
-'cure_paralysis':'cure'
+'cure_disease':'cure',
+'cure_paralysis':'cure',
 'fortify_magicka':'fortify_magicka',
 'fortify_intelligence':'fortify',
 'fortify_strength':'fortify',
