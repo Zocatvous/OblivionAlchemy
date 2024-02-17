@@ -39,7 +39,7 @@ class PlantFactory:
 
 	def get_random_plant(self):
 		plant=self.plant_df.sample(n=1).iloc[0]
-		pretty_name = self.pretty_string(plant[0])
+		pretty_name = self._pretty_string(plant[0])
 		for col in plant.index:
 			plant[col] = self._pretty_string(str(plant[col]))
 		return plant
