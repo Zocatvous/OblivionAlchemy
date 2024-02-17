@@ -34,10 +34,10 @@ async def pick_random_plant(ctx):
 	plt = plant_factory.get_random_plant()
 	print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
 	plt_name = plt[0]
-	plt_effect_1 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[1]])} {plt[1]}'
-	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[2]])} {plt[2]}'
-	plt_effect_3 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[3]])} {plt[3]}'
-	plt_effect_4 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[4]])} {plt[4]}'
+	plt_effect_1 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[1]])} {plt[1]}'
+	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[2]])} {plt[2]}'
+	plt_effect_3 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[3]])} {plt[3]}'
+	plt_effect_4 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[4]])} {plt[4]}'
 
 	embed = discord.Embed(
 		title=f'{plt_name}',
