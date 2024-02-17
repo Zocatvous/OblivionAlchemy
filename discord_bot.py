@@ -18,7 +18,6 @@ intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-
 @bot.command(aliases=['emojis'])
 async def list_emojis(ctx):
 	emojis = ctx.guild.emojis  # Gets a list of emojis from the guild where the command was called
