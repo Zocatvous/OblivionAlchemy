@@ -59,3 +59,6 @@ emojimap = {
 'paralyze':'paralyze',
 'light':'light',
 }
+
+def pretty_string(namestring):
+	return namestring.replace('_', ' ').title()

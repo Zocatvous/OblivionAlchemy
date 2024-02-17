@@ -1,5 +1,6 @@
 from typing import Union, List
 import pandas as pd
+from helper import pretty_string
 import random
 
 def construct_df(path_to_csv):
@@ -18,8 +19,7 @@ class PlantFactory:
 			self.plant_df[column] = self.plant_df[column].str.lower().str.replace(' ', '_').str.replace(r'(?<!^)(?=[A-Z])', '_', regex=True)
 		self.plant_df.to_csv('./processed_flower_effects.csv', index=False)
 
-	def _pretty_string(self, plant_string):
-		return plant_string.replace('_', ' ').title()
+
 
 	def get_plants(self, *plant_names: str):
 		plant_names_list = list(plant_names)  
@@ -39,9 +39,9 @@ class PlantFactory:
 
 	def get_random_plant(self):
 		plant=self.plant_df.sample(n=1).iloc[0]
-		pretty_name = self._pretty_string(plant[0])
+		pretty_name = pretty_string(plant[0])
 		for col in plant.index:
-			plant[col] = self._pretty_string(str(plant[col]))
+			plant[col] = pretty_string(str(plant[col]))
 		return plant
 
 	
