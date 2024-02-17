@@ -1,6 +1,6 @@
 from typing import Union, List
 import pandas as pd
-from helper import _pretty_string
+from helper import pretty_string
 import random
 
 def construct_df(path_to_csv):
