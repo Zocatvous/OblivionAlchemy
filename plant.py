@@ -11,7 +11,7 @@ def construct_df(path_to_csv):
 
 class PlantFactory:
 	def __init__(self):
-		self.plant_df =construct_df('./processed_flower_effects.csv')
+		self.plant_df =construct_df('./resources/csv/processed_flower_effects.csv')
 
 	def _convert_to_snake_case(self):
 		for column in self.plant_df.columns:
@@ -44,5 +44,6 @@ class PlantFactory:
 			plant[col] = self._pretty_string(str(plant[col]))
 		return plant
 
+	
 # print(x.get_random_plant())
 # print(x.get_plants('carrot','corn','mandrake_root'))
