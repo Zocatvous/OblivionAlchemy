@@ -17,36 +17,66 @@ intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-
 emojimap = {
-'cure':utils.get(ctx.guild.emojis, name='cure'),
-'fortify_magicka':utils.get(ctx.guild.emojis, name='fortify_magicka'),
-'fortify_intelligence':utils.get(ctx.guild.emojis, name='fortify'),
-'fortify_strength':utils.get(ctx.guild.emojis, name='fortify'),
-'fortify_agility':utils.get(ctx.guild.emojis, name='fortify'),
-'fortify_health':utils.get(ctx.guild.emojis, name='fortify'),
-'fortify_luck':utils.get(ctx.guild.emojis, name='fortify'),
-'fortify_personality':utils.get(ctx.guild.emojis, name='fortify'),
-'fortify_fatigue':utils.get(ctx.guild.emojis, name='fortify'),
-'fortify_endurance':utils.get(ctx.guild.emojis, name='fortify'),
-'burden':utils.get(ctx.guild.emojis, name='burden'),
-'frost_damage':utils.get(ctx.guild.emojis, name='frost'),
-'shock_damage':utils.get(ctx.guild.emojis, name='shock'),
-'fire_damage':utils.get(ctx.guild.emojis, name='fire'),
-'resist_frost':utils.get(ctx.guild.emojis, name='resist_element'),
-'resist_fire':utils.get(ctx.guild.emojis, name='resist_element'),
-'resist_shock':utils.get(ctx.guild.emojis, name='resist_element'),
-'frost_shield':utils.get(ctx.guild.emojis, name='frost_shield'),
-'shock_shield':utils.get(ctx.guild.emojis, name='shock_shield'),
-'fire_shield':utils.get(ctx.guild.emojis, name='fire_shield'),
-'silence':utils.get(ctx.guild.emojis, name='silence'),
-'reflect_damage':utils.get(ctx.guild.emojis, name='reflect_damage'),
-'reflect_spell':utils.get(ctx.guild.emojis, name='reflect_spell'),
-'invisibility':utils.get(ctx.guild.emojis, name='invisibility'),
-'restore_fatigue':utils.get(ctx.guild.emojis, name='restore'),
-'restore_magicka':utils.get(ctx.guild.emojis, name='restore'),
-'restore_health':utils.get(ctx.guild.emojis, name='restore'),
-'restore_strength':utils.get(ctx.guild.emojis, name='restore'),
+'cure_poison':'cure',
+'cure_disease':'cure'
+'cure_paralysis':'cure'
+'fortify_magicka':'fortify_magicka',
+'fortify_intelligence':'fortify',
+'fortify_strength':'fortify',
+'fortify_speed':'fortify'
+'fortify_agility':'fortify',
+'fortify_health':'fortify',
+'fortify_speed':'fortify',
+'fortify_luck':'fortify',
+'fortify_personality':'fortify',
+'fortify_fatigue':'fortify',
+'fortify_endurance':'fortify',
+'burden':'burden',
+'frost_damage':'frost',
+'shock_damage':'shock',
+'fire_damage':'fire',
+'shield':'shield',
+'resist_disease':'resist_element',
+'resist_frost':'resist_element',
+'resist_fire':'resist_element',
+'resist_shock':'resist_element',
+'frost_shield':'frost_shield',
+'shock_shield':'shock_shield',
+'fire_shield':'fire_shield',
+'silence':'silence',
+'reflect_damage':'reflect_damage',
+'reflect_spell':'reflect_spell',
+'invisibility':'invisibility',
+'restore_fatigue':'restore',
+'restore_magicka':'restore',
+'restore_health':'restore',
+'restore_strength':'restore',
+'restore_willpower':'restore',
+'restore_intelligence':'restore',
+'restore_agility':'restore'
+'restore_endurance':'restore'
+'restore_luck':'restore',
+'burden':'burden',
+'water_breathing':'water_breathing',
+'water_walking':'water_walking',
+'silence':'silence',
+'night-eye':'night_eye',
+'damage_agility':'damage_attribute',
+'damage_endurance':'damage_attribute',
+'damage_fatigue':'damage_attribute',
+'damage_strength':'damage_attribute',
+'damage_magicka':'damage_attribute',
+'damage_willpower':'damage_attribute',
+'damage_health':'damage_attribute',
+'damage_luck':'damage_attribute',
+'damage_intelligence':'damage_attribute',
+'damage_personality':'damage_attribute',
+'damage_speed':'damage_attribute',
+'detect_life':'detect_life',
+'chameleon':'chameleon',
+'paralyze':'paralyze',
+'light':'light',
 }
 
 @bot.command(aliases=['emojis'])
@@ -68,11 +98,10 @@ async def pick_random_plant(ctx):
 	plt = plant_factory.get_random_plant()
 	print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
 	plt_name = plt[0]
-	print(utils.get(ctx.guild.emojis, name='cure'))
-	plt_effect_1 = f'{emojimap[plt[1]]} {plt[1]}'
-	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=plt[2])} {plt[2]}'
-	plt_effect_3 = f'{utils.get(ctx.guild.emojis, name=plt[3])} {plt[3]}'
-	plt_effect_4 = f'{utils.get(ctx.guild.emojis, name=plt[4])} {plt[4]}'
+	plt_effect_1 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[1]])} {plt[1]}'
+	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[2]])} {plt[2]}'
+	plt_effect_3 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[3]])} {plt[3]}'
+	plt_effect_4 = f'{utils.get(ctx.guild.emojis, name=emoji_map[plt[4]])} {plt[4]}'
 
 	embed = discord.Embed(
 		title=f'{plt_name}',
