@@ -1,12 +1,10 @@
 import discord
 from discord.ext import commands
-from discord import Intents
+from discord import Intents, utils
 from dotenv import load_dotenv
 import os
-
-
-
 from plant import PlantFactory
+from helper
 
 
 load_dotenv()
@@ -22,24 +20,6 @@ intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 #client = discord.Client(intents=intents)
-
-
-# @client.event
-# async def on_ready():
-# 	try:
-# 		print(f'{client.user.name} Online')
-# 	except Exception as e:
-# 		print(f'ISSUE: {e}')
-
-# @client.event
-# async def on_message(message):
-# 	# Prevent bot from responding to its own messages
-# 	if message.author == client.user:
-# 		return
-
-# 	# A simple command that responds when someone types "hello"
-# 	if message.content.lower() == 'hello':
-# 		await message.channel.send(f'Hello! {client.user}')
 
 
 
@@ -59,14 +39,15 @@ async def greet(ctx):
 async def pick_random_plant(ctx):
 	# if message.content == 'pick':
 	# try
+	emojis = ctx.guild.emojis
 	plant_factory = PlantFactory()
 	plt = plant_factory.get_random_plant()
 	print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
 	plt_name = plt[0]
-	plt_effect_1 = plt[1]
-	plt_effect_2 = plt[2]
-	plt_effect_3 = plt[3]
-	plt_effect_4 = plt[4]
+	plt_effect_1 = f'{utils.get(ctx.guild.emojis, name=plt[0])} {plt[0]}'
+	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=plt[1])} {plt[1]}'
+	plt_effect_3 = f'{utils.get(ctx.guild.emojis, name=plt[2])} {plt[2]}'
+	plt_effect_4 = f'{utils.get(ctx.guild.emojis, name=plt[3])} {plt[3]}'
 
 	embed = discord.Embed(
 		title=f'{plt_name}',
