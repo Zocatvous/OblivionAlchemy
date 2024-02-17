@@ -37,9 +37,6 @@ class PickPlantButton(View):
 		await interaction.response.edit_message(content="Here's your random plant:", embed=embed, view=self)
 
 
-
-
-
 @bot.command(aliases=['emojis'])
 async def list_emojis(ctx):
 	emojis = ctx.guild.emojis  # Gets a list of emojis from the guild where the command was called
@@ -69,10 +66,11 @@ async def pick_random_plant(ctx):
 	)
 	embed.set_image(url='https://en.uesp.net/wiki/File:OB-icon-ingredient-Arrowroot.png')
 
-	effects_list = [f"{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",	f"{plt_effect_4}"]
+	effects_list = [f"{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",f"{plt_effect_4}"]
 	effects_str = '\n'.join(effects_list)
 	embed.add_field(name="Effects", value=effects_str, inline=False)
-	await ctx.send(embed=embed)
+	view=PickPlantButton()
+	await ctx.send(embed=embed, view=view)
 	# except Exception as e:
 	# 	print(e)
 	# 	pass
