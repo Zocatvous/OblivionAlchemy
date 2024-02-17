@@ -246,4 +246,4 @@ giant_effects_list = [['resist_paralysis'],
 
 for eff in giant_effects_list:
 	val = Alchemy.generate_magnitude(eff)
-	print(f'Player Effective alchemy_level={}')
+

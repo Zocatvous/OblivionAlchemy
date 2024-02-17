@@ -88,7 +88,7 @@ async def pick_random_plant(ctx):
 	# embed.add_field(name=plt_effect_4, inline=False)
 
 
-	effects_list = [f"{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",	f"{plt_effect_4}"]
+	effects_list = [f"https://cdn.discordapp.com/emojis/1208140077461536840.webp?size=160&quality=lossless{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",	f"{plt_effect_4}"]
 	effects_str = '\n'.join(effects_list)
 	embed.add_field(name="Effects", value=effects_str, inline=False)
 	await ctx.send(embed=embed)
