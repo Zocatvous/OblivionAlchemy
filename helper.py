@@ -35,8 +35,8 @@ emojimap = {
 'restore_strength':'restore',
 'restore_willpower':'restore',
 'restore_intelligence':'restore',
-'restore_agility':'restore'
-'restore_endurance':'restore'
+'restore_agility':'restore',
+'restore_endurance':'restore',
 'restore_luck':'restore',
 'burden':'burden',
 'water_breathing':'water_breathing',
