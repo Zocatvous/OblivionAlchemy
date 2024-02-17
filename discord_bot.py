@@ -46,22 +46,19 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 # Assuming you have a command to list emojis
 @bot.command(aliases=['emojis'])
 async def list_emojis(ctx):
-    emojis = ctx.guild.emojis  # Gets a list of emojis from the guild where the command was called
-    for emoji in emojis:
-        await ctx.send(f"{emoji} -> {emoji.id}")  # Sends each emoji's representation and its ID
+	emojis = ctx.guild.emojis  # Gets a list of emojis from the guild where the command was called
+	for emoji in emojis:
+		await ctx.send(f"{emoji} -> {emoji.id}")  # Sends each emoji's representation and its ID
 
 @bot.command(aliases=['hello'])
 async def greet(ctx):
 	await ctx.send("Hello!")
 
 
-
-
-
 @bot.command(aliases=['pick'])
 async def pick_random_plant(ctx):
 	# if message.content == 'pick':
-	# try:
+	# try
 	plant_factory = PlantFactory()
 	plt = plant_factory.get_random_plant()
 	print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
@@ -88,7 +85,7 @@ async def pick_random_plant(ctx):
 	# embed.add_field(name=plt_effect_4, inline=False)
 
 
-	effects_list = [f"https://cdn.discordapp.com/emojis/1208140077461536840.webp?size=160&quality=lossless{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",	f"{plt_effect_4}"]
+	effects_list = [f"{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",	f"{plt_effect_4}"]
 	effects_str = '\n'.join(effects_list)
 	embed.add_field(name="Effects", value=effects_str, inline=False)
 	await ctx.send(embed=embed)
