@@ -1,6 +1,6 @@
 from typing import Union, List
 import pandas as pd
-from helper import pretty_string
+from helper import _pretty_string
 import random
 
 def construct_df(path_to_csv):
@@ -39,9 +39,8 @@ class PlantFactory:
 
 	def get_random_plant(self):
 		plant=self.plant_df.sample(n=1).iloc[0]
-		pretty_name = pretty_string(plant[0])
 		for col in plant.index:
-			plant[col] = pretty_string(str(plant[col]))
+			plant[col] = plant[col].strip().replace(r'\xa','')
 		return plant
 
 	

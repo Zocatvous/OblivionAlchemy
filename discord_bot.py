@@ -4,7 +4,7 @@ from discord import Intents, utils
 from dotenv import load_dotenv
 import os
 from plant import PlantFactory
-from helper import emojimap
+from helper import emojimap, pretty_string
 
 load_dotenv()
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
@@ -34,10 +34,10 @@ async def pick_random_plant(ctx):
 	plt = plant_factory.get_random_plant()
 	print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
 	plt_name = plt[0]
-	plt_effect_1 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[1]])} {plt[1]}'
-	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[2]])} {plt[2]}'
-	plt_effect_3 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[3]])} {plt[3]}'
-	plt_effect_4 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[4]])} {plt[4]}'
+	plt_effect_1 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[1]])} {pretty_string(plt[1])}'
+	plt_effect_2 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[2]])} {pretty_string(plt[2])}'
+	plt_effect_3 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[3]])} {pretty_string(plt[3])}'
+	plt_effect_4 = f'{utils.get(ctx.guild.emojis, name=emojimap[plt[4]])} {pretty_string(plt[4])}'
 
 	embed = discord.Embed(
 		title=f'{plt_name}',
