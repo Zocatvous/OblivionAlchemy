@@ -5,7 +5,7 @@ emojimap = {
 'fortify_magicka':'fortify_magicka',
 'fortify_intelligence':'fortify',
 'fortify_strength':'fortify',
-'fortify_speed':'fortify'
+'fortify_speed':'fortify',
 'fortify_agility':'fortify',
 'fortify_health':'fortify',
 'fortify_speed':'fortify',
