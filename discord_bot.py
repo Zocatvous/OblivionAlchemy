@@ -30,9 +30,6 @@ async def greet(ctx):
 
 @bot.command(aliases=['pick'])
 async def pick_random_plant(ctx):
-	# if message.content == 'pick':
-	# try
-	emojis = ctx.guild.emojis
 	plant_factory = PlantFactory()
 	plt = plant_factory.get_random_plant()
 	print(f'plant0:{plt[0]} plant1:{plt[1]} plant2:{plt[2]} plant3:{plt[3]} plant4:{plt[4]}')
