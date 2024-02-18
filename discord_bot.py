@@ -5,7 +5,7 @@ from discord.ui import Button, View
 from dotenv import load_dotenv
 import os
 from plant import PlantFactory
-from helper import emojimap, pretty_stringe
+from helper import emojimap, pretty_string
 
 load_dotenv()
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
