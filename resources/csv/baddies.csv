@@ -1,0 +1,5 @@
+﻿name|strength_level|endurance_level|willpower_level|intelligence_level|agility_level|personality_level|speed_level|luck_level
+Bandit|25|25|25|20|20|20|20|26
+Guard|25|25|25|25|20|20|20|26
+Zombie|25|25|25|25|20|20|20|26
+Xivilai|50|50|50|50|50|50|50|26

@@ -39,6 +39,7 @@ emojimap = {
 'restore_health':'restore',
 'restore_strength':'restore',
 'restore_willpower':'restore',
+'restore_speed':'restore',
 'restore_personality':'restore',
 'restore_intelligence':'restore',
 'restore_agility':'restore',

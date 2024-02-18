@@ -19,6 +19,12 @@ intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+
+
+
+
+
+
 class PickPlantButton(View):
 	def __init__(self, plant_factory):
 		super().__init__(timeout=None)
@@ -34,7 +40,42 @@ class PickPlantButton(View):
 		embed = Embed(title=plt_name, description='Need to put text here about the flower desciption - maybe more if you roll well', color=Color.green())
 		embed.add_field(name="Effects", value=effects_str, inline=False)
 		
-		await interaction.response.edit_message(content="Here's your plant:", embed=embed, view=self)
+		await interaction.response.send_message(embed=embed, view=self)
+
+
+class HomePage(View):
+	def __init__(self, user_stats, inventory):
+		super().__init__(timeout=None)  # Optional: Set a timeout for the view
+		self.user_stats = user_stats
+		self.inventory = inventory
+
+	@discord.ui.button(label="Explore", style=discord.ButtonStyle.green, custom_id="explore")
+	async def explore(self, interaction: discord.Interaction, button: Button):
+		# Handle the Explore action
+		await interaction.response.send_message("Adventure awaits!", ephemeral=True)
+		
+	@discord.ui.button(label="Alchemy", style=discord.ButtonStyle.green, custom_id="alchemy")
+	async def alchemy(self, interaction: discord.Interaction, button: Button):
+		# Handle the Alchemy action
+		await interaction.response.send_message("Time to brew some potions!", ephemeral=True)
+
+
+	@discord.ui.button(label="Stats", style=discord.ButtonStyle.purple, custom_id="alchemy")
+	async def stats(self, interaction: discord.Interaction, button: Button):
+		# Handle the Alchemy action
+		await interaction.response.send_message("Time to brew some potions!", ephemeral=True)
+
+	@discord.ui.button(label="Travel", style=discord.ButtonStyle.grey, custom_id="travel")
+	async def travel(self, interaction: discord.Interaction, button: Button):
+		# Handle the Travel action
+		await interaction.response.send_message("Off to new destinations!", ephemeral=True)
+
+
+
+
+
+
+
 
 
 @bot.command(aliases=['emojis'])
