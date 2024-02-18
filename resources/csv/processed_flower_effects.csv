@@ -66,7 +66,7 @@ monkshood_root_pulp| restore_strength| damage_intelligence| fortify_endurance| b
 morning_glory_root_pulp| burden| damage_willpower| frost_shield| damage_magicka|
 mort_flesh| damage_fatigue| damage_luck| fortify_health| silence|
 motherwort_sprig| resist_poison| damage_fatigue| silence| invisibility|
-mugwort_seeds| restore_health|nan|nan|nan|
+mugwort_seeds| restore_health|restore_fatigue|fortify_fatigue|fortify_willpower|
 mutton| fortify_health| damage_fatigue| dispel| damage_magicka|
 nightshade| damage_health| burden| damage_luck| fortify_magicka|
 ogre's_teeth| damage_intelligence| resist_paralysis| shock_damage| fortify_strength|
