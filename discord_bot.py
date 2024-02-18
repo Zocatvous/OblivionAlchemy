@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord import Intents, utils, ButtonStyle
+from discord import Intents, utils, ButtonStyle, Color
 from discord.ui import Button, View
 from dotenv import load_dotenv
 import os
@@ -31,7 +31,7 @@ class PickPlantButton(View):
 		plt_effects = [f'{discord.utils.get(interaction.guild.emojis, name=emojimap[plt[i]])} {pretty_string(plt[i])}' for i in range(1, 4)]
 		effects_str = '\n'.join(plt_effects)
 		
-		embed = Embed(title=plt_name, description='Need to put text here about the flower desciption - maybe more if you roll well', color=discord.Color.green())
+		embed = Embed(title=plt_name, description='Need to put text here about the flower desciption - maybe more if you roll well', color=Color.green())
 		embed.add_field(name="Effects", value=effects_str, inline=False)
 		
 		await interaction.response.edit_message(content="Here's your random plant:", embed=embed, view=self)
