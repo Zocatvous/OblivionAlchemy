@@ -102,7 +102,7 @@ tinder_polypore_cap| restore_willpower| resist_disease| invisibility| damage
 tobacco| restore_fatigue| resist_paralysis| damage_magicka| dispel|A pokey 
 tomato| restore_fatigue| detect_life| burden| shield|A pokey 
 troll_fat| damage_agility| fortify_personality| damage_willpower| damage_health|A pokey 
-vampire_dust*| silence| resist_disease| frost_damage| invisibility|A pokey 
+vampire_dust| silence| resist_disease| frost_damage| invisibility|A pokey 
 venison| restore_health| feather| damage_health| chameleon|A pokey 
 viper's_bugloss_leaves| resist_paralysis| night-eye| burden| cure_paralysis|A pokey 
 void_salts| restore_magicka| damage_health| fortify_magicka| dispel|A pokey 

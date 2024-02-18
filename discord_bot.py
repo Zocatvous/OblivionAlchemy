@@ -21,7 +21,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 class PickPlantButton(View):
 	def __init__(self, plant_factory):
-		super().__init__()
+		super().__init__(timeout=None)
 		self.plant_factory = PlantFactory()
 
 	@discord.ui.button(label="Pick", style=ButtonStyle.green, custom_id="pick_plant")
