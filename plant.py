@@ -13,7 +13,7 @@ def construct_df(path_to_csv):
 class PlantFactory:
 	def __init__(self):
 		self.plant_df =construct_df('./resources/csv/processed_flower_effects.csv')
-		print(self.plant_df.columns)
+
 
 	def _convert_to_snake_case(self):
 		for column in self.plant_df.columns:
@@ -44,6 +44,6 @@ class PlantFactory:
 			plant[col] = plant[col].strip().replace(r'\xa','')
 		return plant
 
-x = PlantFactory()
+
 # print(x.get_random_plant())
 # print(x.get_plants('carrot','corn','mandrake_root'))
