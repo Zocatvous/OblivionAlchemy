@@ -1,10 +1,10 @@
 Column1|Column2|Column3|Column4|Column5|Column6
 Flower Name|Effect 1|Effect 2|Effect 3|Effect 4|Description
-alkanet_flower| restore_intelligence| resist_poison| light| damage_fatigue|Alkanet is a tall flowering plant commonly found around Skingrad and throughout the West Weald. Alkanet Flowers are harvested from the plant for use in potions, its most useful effects being Light and Restore Intelligence.
-alocasia_fruit| restore_fatigue| restore_health|light|damage_magicka|Alocasia is a short, leafy plant that yields fruit upon harvest. It can be found almost anywhere outdoors in Mania, tending to grow more around settlements and the main trails. The residents of Mania consume the plant's fruit as part of their regular diets.
-aloe_vera_leaves| restore_fatigue| restore_health| damage_magicka| invisibility|Aloe Vera tends to be most plentiful in coastal locations, such as Blackwood and the Gold Coast. Many Aloe Vera grow in Anvil, both in the town itself and by the docks.
-ambrosia| restore_health|reflect_spell|reflect_damage|invisibility|The Food of the Gods?
-apple| restore_fatigue| damage_luck| fortify_willpower| damage_health|A common crunchy fruit
+alkanet_flower| restore_intelligence| resist_poison| light| damage_fatigue|
+alocasia_fruit| restore_fatigue| restore_health|light|damage_magicka|
+aloe_vera_leaves| restore_fatigue| restore_health| damage_magicka| invisibility|
+ambrosia| restore_health|reflect_spell|reflect_damage|invisibility|
+apple| restore_fatigue| damage_luck| fortify_willpower| damage_health|
 arrowroot| restore_agility| damage_luck| fortify_strength| burden|
 beef| restore_fatigue| shield| fortify_agility| dispel|
 bergamot_seeds| resist_disease| dispel| damage_magicka| silence|
