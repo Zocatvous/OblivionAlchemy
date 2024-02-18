@@ -24,17 +24,18 @@ class PickPlantButton(View):
 		super().__init__(timeout=None)
 		self.plant_factory = PlantFactory()
 
-	@discord.ui.button(label="Pick", style=ButtonStyle.green, custom_id="pick_plant")
+	@discord.ui.button(label="Pick Again!", style=ButtonStyle.green, custom_id="pick_plant")
 	async def pick_plant(self, interaction: discord.Interaction, button: Button):
 		plt = self.plant_factory.get_random_plant()
 		plt_name = pretty_string(plt[0])
 		plt_effects = [f'{discord.utils.get(interaction.guild.emojis, name=emojimap[plt[i]])} {pretty_string(plt[i])}' for i in range(1, 4)]
 		effects_str = '\n'.join(plt_effects)
+		print("IT WOOOOOOOOOOOOOOOOOOORKED")
 		
 		embed = Embed(title=plt_name, description='Need to put text here about the flower desciption - maybe more if you roll well', color=Color.green())
 		embed.add_field(name="Effects", value=effects_str, inline=False)
 		
-		await interaction.response.edit_message(content="Here's your random plant:", embed=embed, view=self)
+		await ctx.send(content="Here's your random plant:", embed=embed, view=self)
 
 
 @bot.command(aliases=['emojis'])
@@ -76,7 +77,7 @@ async def pick_random_plant(ctx):
 	view = discord.ui.View()
 	view.add_item(button)
 
-	
+
 	await ctx.send(embed=embed, view=view)
 	# except Exception as e:
 	# 	print(e)
