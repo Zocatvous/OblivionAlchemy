@@ -4,7 +4,7 @@ emojimap = {
 'cure_paralysis':'cure',
 'fortify_magicka':'fortify_magicka',
 'fortify_intelligence':'fortify',
-'fortify_willpower':'fortify'
+'fortify_willpower':'fortify',
 'fortify_strength':'fortify',
 'fortify_speed':'fortify',
 'fortify_agility':'fortify',
