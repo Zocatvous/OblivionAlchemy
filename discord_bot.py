@@ -60,7 +60,7 @@ class HomePage(View):
 		await interaction.response.send_message("Time to brew some potions!", ephemeral=True)
 
 
-	@discord.ui.button(label="Stats", style=discord.ButtonStyle.purple, custom_id="alchemy")
+	@discord.ui.button(label="Stats", style=discord.ButtonStyle.blurple, custom_id="alchemy")
 	async def stats(self, interaction: discord.Interaction, button: Button):
 		# Handle the Alchemy action
 		await interaction.response.send_message("Time to brew some potions!", ephemeral=True)
