@@ -1,114 +1,114 @@
 ﻿Flower Name|Effect 1|Effect 2|Effect 3|Effect 4|Description
-alkanet_flower| restore_intelligence| resist_poison| light| damage_fatigue|
-alocasia_fruit| restore_fatigue| restore_health|light|damage_magicka|
-aloe_vera_leaves| restore_fatigue| restore_health| damage_magicka| invisibility|
-ambrosia| restore_health|reflect_spell|reflect_damage|invisibility|
-apple| restore_fatigue| damage_luck| fortify_willpower| damage_health|
-arrowroot| restore_agility| damage_luck| fortify_strength| burden|
-beef| restore_fatigue| shield| fortify_agility| dispel|
-bergamot_seeds| resist_disease| dispel| damage_magicka| silence|
-blackberry| restore_fatigue| resist_shock| fortify_endurance| restore_magicka|
-bloodgrass| chameleon| resist_paralysis| burden| fortify_health|
-boar_meat| restore_health| damage_speed| fortify_health| burden|
-bog_beacon_asco_cap| restore_magicka| shield| damage_personality| damage_endurance|
-bonemeal*| damage_fatigue| resist_fire| fortify_luck| night-eye|
-bread_loaf| restore_fatigue| detect_life| damage_agility| damage_strength|
-cairn_bolete_cap| restore_health| damage_intelligence| resist_paralysis| shock_damage|
-carrot| restore_fatigue| night-eye| fortify_intelligence| damage_endurance|
-cheese_wedge| restore_fatigue| resist_fire| fire_shield| damage_agility|
-cheese_wheel| restore_fatigue| resist_paralysis| damage_luck| fortify_willpower|
-cinnabar_polypore_red_cap| restore_agility| shield| damage_personality| damage_endurance|
-cinnabar_polypore_yellow_cap| restore_endurance| fortify_endurance| damage_personality| reflect_spell|
-clannfear_claws| cure_disease| resist_disease| paralyze| damage_health|
-clouded_funnel_cap| restore_intelligence| fortify_intelligence| damage_endurance| damage_magicka|
-columbine_root_pulp| restore_personality| resist_frost| fortify_magicka| chameleon|
-corn| restore_fatigue| restore_intelligence| damage_agility| shock_shield|
-crab_meat| restore_endurance| resist_shock| damage_fatigue| fire_shield|
-daedra_heart| restore_health| shock_shield| damage_magicka| silence|
-daedra_silk| burden| night-eye| chameleon| damage_endurance|
-daedra_venin| paralyze| restore_fatigue| damage_health| reflect_damage|
-daedroth_teeth| night-eye| frost_shield| burden| light|
-dragon's_tongue| resist_fire| damage_health| restore_health| fire_shield|
-dreugh_wax| damage_fatigue| resist_poison| water_breathing| damage_health|
-dryad_saddle_polypore_cap| restore_luck| resist_frost| damage_speed| frost_damage|
-ectoplasm| shock_damage| dispel| fortify_magicka| damage_health|
-elf_cup_cap| damage_willpower| cure_disease| fortify_strength| damage_intelligence|
-emetic_russula_cap| restore_agility| shield| damage_personality| damage_endurance|
-fennel_seeds| restore_fatigue| damage_intelligence| damage_magicka| paralyze|
-fire_salts| fire_damage| resist_frost| restore_magicka| fire_shield|
-flax_seeds| restore_magicka| feather| shield| damage_health|
-flour| restore_fatigue| damage_personality| fortify_fatigue| reflect_damage|
-fly_amanita_cap| restore_agility| burden| restore_health| shock_damage|
-foxglove_nectar| resist_poison| resist_paralysis| restore_luck| resist_disease|
-frost_salts| frost_damage| resist_fire| silence| frost_shield|
-garlic| resist_disease| damage_agility| frost_shield| fortify_strength|
-ginkgo_leaf| restore_speed| fortify_magicka| damage_luck| shock_damage|
-ginseng| damage_luck| cure_poison| burden| fortify_magicka|
-glow_dust| restore_speed| light| reflect_spell| damage_health|
-grapes| restore_fatigue| water_walking| dispel| damage_health|
-green_stain_cup_cap| restore_fatigue| damage_speed| reflect_damage| damage_health|
-green_stain_shelf_cap| restore_luck| fortify_luck| damage_fatigue| restore_health|
-ham| restore_fatigue| restore_health| damage_magicka| damage_luck|
-harrada| damage_health| damage_magicka| silence| paralyze|
-imp_gall| fortify_personality| cure_paralysis| damage_health| fire_damage|
-ironwood_nut| restore_intelligence| resist_fire| damage_fatigue| fortify_health|
-lady's_mantle_leaves| restore_health| damage_endurance| night-eye| feather|
-lady's_smock_leaves| restore_intelligence| resist_fire| damage_fatigue| fortify_health|
-lavender_sprig| restore_personality| fortify_willpower| restore_health| damage_luck|
-leek| restore_fatigue| fortify_agility| damage_personality| damage_strength|
-lettuce| restore_fatigue| restore_luck| fire_shield| damage_personality|
-lichor| restore_magicka|nan|nan|nan|
-mandrake_root| cure_disease| resist_poison| damage_agility| fortify_willpower|
-milk_thistle_seeds| light| frost_damage| cure_paralysis| paralyze|
-minotaur_horn| restore_willpower| burden| fortify_endurance| resist_paralysis|
-monkshood_root_pulp| restore_strength| damage_intelligence| fortify_endurance| burden|
-morning_glory_root_pulp| burden| damage_willpower| frost_shield| damage_magicka|
-mort_flesh| damage_fatigue| damage_luck| fortify_health| silence|
-motherwort_sprig| resist_poison| damage_fatigue| silence| invisibility|
-mugwort_seeds| restore_health|restore_fatigue|fortify_fatigue|fortify_willpower|
-mutton| fortify_health| damage_fatigue| dispel| damage_magicka|
-nightshade| damage_health| burden| damage_luck| fortify_magicka|
-ogre's_teeth| damage_intelligence| resist_paralysis| shock_damage| fortify_strength|
-onion| restore_fatigue| water_breathing| detect_life| damage_health|
-orange| restore_fatigue| detect_life| burden| shield|
-pear| restore_fatigue| damage_speed| fortify_speed| damage_health|
-peony_seeds| restore_strength| damage_health| damage_speed| restore_fatigue|
-potato| restore_fatigue| shield| burden| frost_shield|
-primrose_leaves| restore_willpower| restore_personality| fortify_luck| damage_strength|
-pumpkin| restore_fatigue| damage_agility| damage_personality| detect_life|
-purgeblood_saltsvl| restore_magicka| damage_health| fortify_magicka| dispel|
-radish| restore_fatigue| damage_endurance| chameleon| burden|
-rat_meat| damage_fatigue| detect_life| damage_magicka| silence|
-redwort_flower| resist_frost| cure_poison| damage_health| invisibility|
-rice| restore_fatigue| silence| shock_shield| damage_agility|
-root_pulp| cure_disease| damage_willpower| fortify_strength| damage_intelligence|
-sacred_lotus_seeds| resist_frost| damage_health| feather| dispel|
-scales| damage_willpower| water_breathing| damage_health| water_walking|
-scamp_skin| damage_magicka| resist_shock| reflect_damage| damage_health|
-shepherd's_pie| cure_disease| shield| fortify_agility| dispel|
-s'jirra's_famous_potato_bread| detect_life| restore_health| damage_agility| damage_strength|
-somnalius_frond| restore_speed| damage_endurance| fortify_health| feather|
-spiddal_stick| damage_health| damage_magicka| fire_damage| restore_fatigue|
-st._jahn's_wort_nectar| resist_shock| damage_health| cure_poison| chameleon|
-steel-blue_entoloma_cap| restore_magicka| fire_damage| resist_frost| burden|
-stinkhorn_cap| damage_health| restore_magicka| water_walking| invisibility|
-strawberry| restore_fatigue| cure_poison| damage_health| reflect_damage|
-summer_bolete_cap| restore_agility| shield| damage_personality| damage_endurance|
-sweetcake| restore_fatigue| feather| restore_health| burden|
-sweetroll| restore_fatigue| resist_disease| damage_personality| fortify_health|
-taproot| restore_luck| damage_endurance| resist_poison| shock_shield|
-tiger_lily_nectar| restore_endurance| damage_strength| water_walking| damage_willpower|
-tinder_polypore_cap| restore_willpower| resist_disease| invisibility| damage_magicka|
-tobacco| restore_fatigue| resist_paralysis| damage_magicka| dispel|
-tomato| restore_fatigue| detect_life| burden| shield|
-troll_fat| damage_agility| fortify_personality| damage_willpower| damage_health|
-vampire_dust*| silence| resist_disease| frost_damage| invisibility|
-venison| restore_health| feather| damage_health| chameleon|
-viper's_bugloss_leaves| resist_paralysis| night-eye| burden| cure_paralysis|
-void_salts| restore_magicka| damage_health| fortify_magicka| dispel|
-water_hyacinth_nectar| damage_luck| damage_fatigue| restore_magicka| fortify_magicka|
-watermelon| restore_fatigue| light| burden| damage_health|
-wheat_grain| restore_fatigue| damage_magicka| fortify_health| damage_personality|
-white_seed_pod| restore_strength| water_breathing| silence| light|
-wisp_stalk_caps| damage_health| damage_willpower| damage_intelligence| fortify_speed|
-wormwood_leaves| fortify_fatigue| invisibility| damage_health| damage_magicka|
+alkanet_flower| restore_intelligence| resist_poison| light| damage_fatigue|A pokey 
+alocasia_fruit| restore_fatigue| restore_health|light|damage_magicka|A pokey 
+aloe_vera_leaves| restore_fatigue| restore_health| damage_magicka| invisibility| Aloe Vera tends to be most plentiful in coastal locations, such as Blackwood and the Gold Coast. Many Aloe Vera grow in Anvil, both in the town itself and by the docks. Some can be found south of Gottshaw Inn.
+ambrosia| restore_health|reflect_spell|reflect_damage|invisibility|A pokey 
+apple| restore_fatigue| damage_luck| fortify_willpower| damage_health|A pokey 
+arrowroot| restore_agility| damage_luck| fortify_strength| burden|A pokey 
+beef| restore_fatigue| shield| fortify_agility| dispel|A pokey 
+bergamot_seeds| resist_disease| dispel| damage_magicka| silence|A pokey 
+blackberry| restore_fatigue| resist_shock| fortify_endurance| restore_magicka|A pokey 
+bloodgrass| chameleon| resist_paralysis| burden| fortify_health|A pokey 
+boar_meat| restore_health| damage_speed| fortify_health| burden|A pokey 
+bog_beacon_asco_cap| restore_magicka| shield| damage_personality| damage_endurance|A pokey 
+bonemeal*| damage_fatigue| resist_fire| fortify_luck| night-eye|A pokey 
+bread_loaf| restore_fatigue| detect_life| damage_agility| damage_strength|A pokey 
+cairn_bolete_cap| restore_health| damage_intelligence| resist_paralysis| shock_damage|A pokey 
+carrot| restore_fatigue| night-eye| fortify_intelligence| damage_endurance|A pokey 
+cheese_wedge| restore_fatigue| resist_fire| fire_shield| damage_agility|A pokey 
+cheese_wheel| restore_fatigue| resist_paralysis| damage_luck| fortify_willpower|A pokey 
+cinnabar_polypore_red_cap| restore_agility| shield| damage_personality| damage_endurance|A pokey 
+cinnabar_polypore_yellow_cap| restore_endurance| fortify_endurance| damage_personality| reflect_spell|A pokey 
+clannfear_claws| cure_disease| resist_disease| paralyze| damage_health|A pokey 
+clouded_funnel_cap| restore_intelligence| fortify_intelligence| damage_endurance| damage_magicka|A pokey 
+columbine_root_pulp| restore_personality| resist_frost| fortify_magicka| chameleon|A pokey 
+corn| restore_fatigue| restore_intelligence| damage_agility| shock_shield|A pokey 
+crab_meat| restore_endurance| resist_shock| damage_fatigue| fire_shield|A pokey 
+daedra_heart| restore_health| shock_shield| damage_magicka| silence|A pokey 
+daedra_silk| burden| night-eye| chameleon| damage_endurance|A pokey 
+daedra_venin| paralyze| restore_fatigue| damage_health| reflect_damage|A pokey 
+daedroth_teeth| night-eye| frost_shield| burden| light|A pokey 
+dragon's_tongue| resist_fire| damage_health| restore_health| fire_shield|A pokey 
+dreugh_wax| damage_fatigue| resist_poison| water_breathing| damage_health|A pokey 
+dryad_saddle_polypore_cap| restore_luck| resist_frost| damage_speed| frost_damage|A pokey 
+ectoplasm| shock_damage| dispel| fortify_magicka| damage_health|A pokey 
+elf_cup_cap| damage_willpower| cure_disease| fortify_strength| damage_intelligence|A pokey 
+emetic_russula_cap| restore_agility| shield| damage_personality| damage_endurance|A pokey 
+fennel_seeds| restore_fatigue| damage_intelligence| damage_magicka| paralyze|A pokey 
+fire_salts| fire_damage| resist_frost| restore_magicka| fire_shield|A pokey 
+flax_seeds| restore_magicka| feather| shield| damage_health|A pokey 
+flour| restore_fatigue| damage_personality| fortify_fatigue| reflect_damage|A pokey 
+fly_amanita_cap| restore_agility| burden| restore_health| shock_damage|A pokey 
+foxglove_nectar| resist_poison| resist_paralysis| restore_luck| resist_disease|A pokey 
+frost_salts| frost_damage| resist_fire| silence| frost_shield|A pokey 
+garlic| resist_disease| damage_agility| frost_shield| fortify_strength|A pokey 
+ginkgo_leaf| restore_speed| fortify_magicka| damage_luck| shock_damage|A pokey 
+ginseng| damage_luck| cure_poison| burden| fortify_magicka|A pokey 
+glow_dust| restore_speed| light| reflect_spell| damage_health|A pokey 
+grapes| restore_fatigue| water_walking| dispel| damage_health|A pokey 
+green_stain_cup_cap| restore_fatigue| damage_speed| reflect_damage| damage_health|A pokey 
+green_stain_shelf_cap| restore_luck| fortify_luck| damage_fatigue| restore_health|A pokey 
+ham| restore_fatigue| restore_health| damage_magicka| damage_luck|A pokey 
+harrada| damage_health| damage_magicka| silence| paralyze|A pokey 
+imp_gall| fortify_personality| cure_paralysis| damage_health| fire_damage|A pokey 
+ironwood_nut| restore_intelligence| resist_fire| damage_fatigue| fortify_health|A pokey 
+lady's_mantle_leaves| restore_health| damage_endurance| night-eye| feather|A pokey 
+lady's_smock_leaves| restore_intelligence| resist_fire| damage_fatigue| fortify_health|A pokey 
+lavender_sprig| restore_personality| fortify_willpower| restore_health| damage_luck|A pokey 
+leek| restore_fatigue| fortify_agility| damage_personality| damage_strength|A pokey 
+lettuce| restore_fatigue| restore_luck| fire_shield| damage_personality|A pokey 
+lichor| restore_magicka|nan|nan|nan|A pokey 
+mandrake_root| cure_disease| resist_poison| damage_agility| fortify_willpower|A pokey 
+milk_thistle_seeds| light| frost_damage| cure_paralysis| paralyze|A pokey 
+minotaur_horn| restore_willpower| burden| fortify_endurance| resist_paralysis|A pokey 
+monkshood_root_pulp| restore_strength| damage_intelligence| fortify_endurance| burden|A pokey 
+morning_glory_root_pulp| burden| damage_willpower| frost_shield| damage_magicka|A pokey 
+mort_flesh| damage_fatigue| damage_luck| fortify_health| silence|A pokey 
+motherwort_sprig| resist_poison| damage_fatigue| silence| invisibility|A pokey 
+mugwort_seeds| restore_health|restore_fatigue|fortify_fatigue|fortify_willpower|A pokey 
+mutton| fortify_health| damage_fatigue| dispel| damage_magicka|A pokey 
+nightshade| damage_health| burden| damage_luck| fortify_magicka|A pokey 
+ogre's_teeth| damage_intelligence| resist_paralysis| shock_damage| fortify_strength|A pokey 
+onion| restore_fatigue| water_breathing| detect_life| damage_health|A pokey 
+orange| restore_fatigue| detect_life| burden| shield|A pokey 
+pear| restore_fatigue| damage_speed| fortify_speed| damage_health|A pokey 
+peony_seeds| restore_strength| damage_health| damage_speed| restore_fatigue|A pokey 
+potato| restore_fatigue| shield| burden| frost_shield|A pokey 
+primrose_leaves| restore_willpower| restore_personality| fortify_luck| damage_strength|A pokey 
+pumpkin| restore_fatigue| damage_agility| damage_personality| detect_life|A pokey 
+purgeblood_saltsvl| restore_magicka| damage_health| fortify_magicka| dispel|A pokey 
+radish| restore_fatigue| damage_endurance| chameleon| burden|A pokey 
+rat_meat| damage_fatigue| detect_life| damage_magicka| silence|A pokey 
+redwort_flower| resist_frost| cure_poison| damage_health| invisibility|A pokey 
+rice| restore_fatigue| silence| shock_shield| damage_agility|A pokey 
+root_pulp| cure_disease| damage_willpower| fortify_strength| damage_intelligence|A pokey 
+sacred_lotus_seeds| resist_frost| damage_health| feather| dispel|A pokey 
+scales| damage_willpower| water_breathing| damage_health| water_walking|A pokey 
+scamp_skin| damage_magicka| resist_shock| reflect_damage| damage_health|A pokey 
+shepherd's_pie| cure_disease| shield| fortify_agility| dispel|A pokey 
+s'jirra's_famous_potato_bread| detect_life| restore_health| damage_agility| damage_strength|A pokey 
+somnalius_frond| restore_speed| damage_endurance| fortify_health| feather|A pokey 
+spiddal_stick| damage_health| damage_magicka| fire_damage| restore_fatigue|A pokey 
+st._jahn's_wort_nectar| resist_shock| damage_health| cure_poison| chameleon|A pokey 
+steel-blue_entoloma_cap| restore_magicka| fire_damage| resist_frost| burden|A pokey 
+stinkhorn_cap| damage_health| restore_magicka| water_walking| invisibility|A pokey 
+strawberry| restore_fatigue| cure_poison| damage_health| reflect_damage|A pokey 
+summer_bolete_cap| restore_agility| shield| damage_personality| damage_endurance|A pokey 
+sweetcake| restore_fatigue| feather| restore_health| burden|A pokey 
+sweetroll| restore_fatigue| resist_disease| damage_personality| fortify_health|A pokey 
+taproot| restore_luck| damage_endurance| resist_poison| shock_shield|A pokey 
+tiger_lily_nectar| restore_endurance| damage_strength| water_walking| damage_willpower|A pokey 
+tinder_polypore_cap| restore_willpower| resist_disease| invisibility| damage_magicka|A pokey 
+tobacco| restore_fatigue| resist_paralysis| damage_magicka| dispel|A pokey 
+tomato| restore_fatigue| detect_life| burden| shield|A pokey 
+troll_fat| damage_agility| fortify_personality| damage_willpower| damage_health|A pokey 
+vampire_dust*| silence| resist_disease| frost_damage| invisibility|A pokey 
+venison| restore_health| feather| damage_health| chameleon|A pokey 
+viper's_bugloss_leaves| resist_paralysis| night-eye| burden| cure_paralysis|A pokey 
+void_salts| restore_magicka| damage_health| fortify_magicka| dispel|A pokey 
+water_hyacinth_nectar| damage_luck| damage_fatigue| restore_magicka| fortify_magicka|A pokey 
+watermelon| restore_fatigue| light| burden| damage_health|A pokey 
+wheat_grain| restore_fatigue| damage_magicka| fortify_health| damage_personality|A pokey 
+white_seed_pod| restore_strength| water_breathing| silence| light|A pokey 
+wisp_stalk_caps| damage_health| damage_willpower| damage_intelligence| fortify_speed|A pokey 
+wormwood_leaves| fortify_fatigue| invisibility| damage_health| damage_magicka|A pokey 

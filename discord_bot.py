@@ -69,7 +69,7 @@ async def pick_random_plant(ctx):
 	effects_list = [f"{plt_effect_1}",f"{plt_effect_2}",f"{plt_effect_3}",f"{plt_effect_4}"]
 	effects_str = '\n'.join(effects_list)
 	embed.add_field(name="Effects", value=effects_str, inline=False)
-	view=PickPlantButton()
+	view=PickPlantButton(plant_factory=plant_factory)
 	await ctx.send(embed=embed, view=view)
 	# except Exception as e:
 	# 	print(e)
