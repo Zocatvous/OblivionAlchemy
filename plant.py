@@ -12,7 +12,7 @@ def construct_df(path_to_csv):
 
 class PlantFactory:
 	def __init__(self):
-		self.plant_df =construct_df('./resources/csv/processed_flower_effects.csv')
+		self.plant_df =construct_df('./resources/csv/processed_flower_effects.csv', delimiter='|')
 
 	def _convert_to_snake_case(self):
 		for column in self.plant_df.columns:
