@@ -18,6 +18,7 @@ emojimap = {
 'shock_damage':'shock',
 'feather':'feather',
 'fire_damage':'fire',
+'dispel':'dispel',
 'shield':'shield',
 'resist_paralysis':'resist_element',
 'resist_poison':'resist_element',
