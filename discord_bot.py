@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord import Intents, utils, ButtonStyle, Color
+from discord import Intents, utils, ButtonStyle, Color, Embed
 from discord.ui import Button, View
 from dotenv import load_dotenv
 import os
