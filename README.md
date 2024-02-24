@@ -27,9 +27,12 @@ This will likely be a very lean class that wraps and delivers any functionality 
 
 - player.py
 This is just a file that will hold all state based information about characters and enemy NPC's which will be one of the three different "gameplay loops" for this bot. 
+<<<<<<< HEAD
 
 - combat.py
 Eventually this will be a spot for 
+=======
+>>>>>>> e83eb05 (adding in some changes for public viewing)
 
 
 Validated against potions results generated here:

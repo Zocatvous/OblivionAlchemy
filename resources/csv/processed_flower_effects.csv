@@ -57,7 +57,7 @@ lady's_smock_leaves| restore_intelligence| resist_fire| damage_fatigue| fort
 lavender_sprig| restore_personality| fortify_willpower| restore_health| damage_luck|FALSE|0.1|A pokey 
 leek| restore_fatigue| fortify_agility| damage_personality| damage_strength|FALSE|0.4|A pokey 
 lettuce| restore_fatigue| restore_luck| fire_shield| damage_personality|FALSE|0.5|A pokey 
-lichor| restore_magicka|nan|nan|nan|FALSE|0.5|A pokey 
+lichor| restore_magicka|restore_fatigue|restore_health|restore_personality|FALSE|0.5|A pokey 
 mandrake_root| cure_disease| resist_poison| damage_agility| fortify_willpower|FALSE|0.1|A pokey 
 milk_thistle_seeds| light| frost_damage| cure_paralysis| paralyze|FALSE|0.1|A pokey 
 minotaur_horn| restore_willpower| burden| fortify_endurance| resist_paralysis|TRUE|5|A pokey 
