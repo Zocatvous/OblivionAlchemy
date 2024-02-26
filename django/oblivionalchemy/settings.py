@@ -5,3 +5,11 @@ DATABASES = {
                                     }
             }
 
+INSTALLED_APPS = [
+'django_extensions',
+'oblivionalchemy',
+]
+
+SHELL_PLUS_IMPORTS = [
+	('oblivionalchemy.models', ('Character'))
+]

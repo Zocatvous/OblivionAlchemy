@@ -1,4 +1,5 @@
 import uuid
+from django.oblivionalchemy.models import Character
 # import pandas as pd
 
 class Player:
@@ -18,13 +19,15 @@ class Player:
 		self.alchemy_level=alchemy_level
 		self.luck_level=luck_level
 		self.suvival=survival_level
-		#self.attributes = pd.read_csv('./resources/csv/weapons.csv', delimiter='|')
 
 		self.health_level = None
 		self.active_effects = [None]
 
+		self.damage = None
+		self.character_sheet = 
+
 	def __repr__(self):
-		return f"<({self.name})>"
+		return f"<({self.name} HP:{self.current_health}/{self.max})>"
 
 	def get_available_strikes_with_weapon(self):
 		pass
@@ -41,9 +44,19 @@ class Player:
 	def magicka(self):
 		return self._magicka
 
+	@property
+	def max_carry_weight(self):
+		return self._max_carry_weighT
+
+
 	def drink_potion(*potions:str):
 		potion_active_effects = []
 
+	def process_action_mask(*action_masks:list):
+		for ac_mask in action_masks:
+			#check_for_damage
+			if ac_mask.damage:
+				print(f'pow. {ac_mask.damage}')
 
 	def generate_weapon_rating(self):
 		pass
