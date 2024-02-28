@@ -132,7 +132,8 @@ class AlchemyFactory:
 			base_cost = self.get_base_cost_for_effect(effect)
 			pestle_str = self.get_instrument_strength(self.player.pestlemortar_level)
 
-			base_mag = math.pow((self.effective_alchemy + pestle_str * 25) / (4 * base_cost / 10), 0.4385964912280702) if base_cost != 0 else 0
+			# base_mag = round(math.pow(((EFFECTIVE_ALCHEMY + PM_LEVEL[1] * 25) / (4 * BASE_COST / 10)), (1/2.28)))
+			base_mag = round(math.pow(((self.effective_alchemy + pestle_str * 25) / (4 * base_cost / 10)), (1/2.28)) if base_cost != 0 else 0
 
 			calc_fac = self.get_instrument_factor(effect, 'calcinator')
 			calc_str = self.get_instrument_strength(self.player.calcinator_level)
@@ -145,8 +146,11 @@ class AlchemyFactory:
 
 
 			if magnitude_only:
-				print(f'effect should be dispel:{effect}')
-				base_mag = ((effective_alchemy + self.get_instrument_strength(self.player.pestlemortar_level) * 25) / (self.get_base_cost_for_effect(effect) / 10)) ** (1/1.28)
+				if calcinator and retort:
+					base_mag = math.pow(((self.effective_alchemy + self.get_instrument_strength(self.player.calcinator_level) * 25) / (self.get_base_cost_for_effect(effect) / 10)), (1/1.28))
+				if (calcinator ^ retort):
+					base_mag = ((effective_alchemy + self.get_instrument_strength(self.player.pestlemortar_level) * 25) / (self.get_base_cost_for_effect(effect) / 10)) ** (1/1.28)
+
 			elif duration_only:
 				return 1
 
@@ -161,7 +165,7 @@ class AlchemyFactory:
 				print(f'base_mag:{base_mag}\ncalc_fac{calc_fac}\ncalc_str:{calc_fac}\nret_mag_fac:{ret_mag_fac}\nret_str:{ret_str}\nalem_fac:{alem_fac}\nalem_str:{alem_str}\n')
 				print(f'magnitude:{magnitude}')
 
-			return round(magnitude,0)
+			return round(magnitude)
 
 		except Exception as e:
 			raise Exception(f'Something went wrong calculating effect magnitude because {e}')
