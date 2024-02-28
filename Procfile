@@ -1,1 +1,1 @@
-worker: python discord_bot.py
+worker: python ./django/discordbot/discord_bot.py

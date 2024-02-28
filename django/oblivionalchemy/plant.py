@@ -1,6 +1,7 @@
 from typing import Union, List
 import pandas as pd
-from helper import pretty_string
+from .helper import pretty_string
+from .helper import flower_effects_data2
 import random
 
 def construct_df(path_to_csv):
@@ -12,8 +13,8 @@ def construct_df(path_to_csv):
 
 class PlantFactory:
 	def __init__(self):
-		self.plant_df =construct_df('./resources/csv/processed_flower_effects.csv')
-
+		self.plant_df = pd.DataFrame(flower_effects_data2)
+		# print(self.plant_df.head())
 
 	def _convert_to_snake_case(self):
 		for column in self.plant_df.columns:
@@ -23,7 +24,7 @@ class PlantFactory:
 
 
 	def get_plants(self, *plant_names: str):
-		plant_names_list = list(plant_names)  
+		plant_names_list = list(plant_names)
 
 		if len(plant_names_list) == 1 and isinstance(plant_names_list[0], str):
 			result_df = self.plant_df[self.plant_df['Flower Name'] == plant_names_list[0]]
@@ -40,10 +41,11 @@ class PlantFactory:
 
 	def get_random_plant(self):
 		plant=self.plant_df.sample(n=1).iloc[0]
-		for col in plant.index:
-			plant[col] = plant[col].strip().replace(r'\xa','')
+		# for col in plant.index:
+		# 	plant[col] = plant[col].strip().replace(r'\xa','')
 		return plant
 
-
+# x = PlantFactory()
+# print(x.plant_df)
 # print(x.get_random_plant())
 # print(x.get_plants('carrot','corn','mandrake_root'))

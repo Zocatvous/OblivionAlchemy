@@ -1,11 +1,15 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import discord
 from discord.ext import commands
 from discord import Intents, utils, ButtonStyle, Color, Embed
 from discord.ui import Button, View
 from dotenv import load_dotenv
 import os
-from plant import PlantFactory
-from helper import emojimap, pretty_string
+from oblivionalchemy.plant import PlantFactory
+from oblivionalchemy.helper import emojimap, pretty_string
 
 load_dotenv()
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
@@ -18,11 +22,6 @@ intents.guilds = True
 intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
-
-
-
-
-
 
 
 class PickPlantButton(View):

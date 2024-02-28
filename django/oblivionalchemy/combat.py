@@ -21,7 +21,8 @@ class CombatFactory:
 			random_attack_mask = AttackMask(random.randbetween(0,2))
 			character = Player(player_name='Baddie')
 
-	def run_random_combat(self)
+	def run_random_combat(self):
+		
 
 
 player1 = Player(name='BOB_Player_1')

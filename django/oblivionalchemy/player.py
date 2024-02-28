@@ -2,10 +2,8 @@ import uuid
 import os
 import sys
 
-from models import Character
+from oblivionalchemy.models import Character
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
-# print(sys.path)
 
 class Player:
 	def __init__(self, name='Test10',
@@ -14,7 +12,7 @@ class Player:
 		pestlemortar_level='novice',
 		retort_level='novice'):
 
-		self.character = Character(name=name)
+		self.character = Character.objects.get(name=name)
 		self.name=name
 		self.alembic_level=alembic_level
 		self.calcinator_level=calcinator_level

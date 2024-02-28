@@ -1,15 +1,11 @@
 import pandas as pd
-
-import os 
-import django
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', '.settings')
-django.setup()
-
-from plant import PlantFactory
-from potion import PotionFactory, PotionInstance
-from player import Player
-from action_mask import ActionMask
+import os
+import math
+from .plant import PlantFactory
+from .potion import PotionFactory, PotionInstance
+from .player import Player
+from .action_mask import ActionMask
+from .helper import effects_dataframe_data
 pd.set_option('display.max_rows',500)
 
 
@@ -24,8 +20,10 @@ def construct_df(path_to_csv):
 class AlchemyFactory:
 	def __init__(self,player:Player):
 		#print('- Oblivion Alchemy in Python -')
-		self.base_mag_df = construct_df('./resources/csv/effect_base_mag.csv')
+		self.player = player
+		self.base_mag_df = pd.DataFrame(effects_dataframe_data)
 		self.plant_factory = PlantFactory()
+
 		# self.potion_factory = Potion
 		#lists
 		self.duration_only_effects_list = []
@@ -33,10 +31,10 @@ class AlchemyFactory:
 		self.negative_effects_list = []
 		self.positive_effects_list = []
 		#constants- may need something else for this to refresh state on things
-		self.effective_alchemy_level = player.alchemy+0.4*(player.luck-50)
+		self.effective_alchemy = max(0, min(player.character.alchemy + 0.4 * (player.character.luck - 50), 100)) 
 
 
-	def find_common_effects_between_plants(self,df):
+	def get_common_effects_between_plants(self,df):
 		effects = df[['Effect 1', 'Effect 2', 'Effect 3', 'Effect 4']].applymap(lambda x: x.strip().replace('\xa0', '')).values.flatten()
 		effect_counts = pd.Series(effects).value_counts()
 		common_effects = effect_counts[effect_counts >= 2].index.tolist()
@@ -56,22 +54,22 @@ class AlchemyFactory:
 		print(type(unique_effects))
 		return list(unique_effects)
 
-	def check_for_magnitude_only_effects(self, effects):
+	def check_for_magnitude_only_effects(self, effect):
 		return self.base_mag_df.loc[self.base_mag_df['effect'] == effect, 'magnitude_only'].iloc[0]
 
-	def check_for_duration_only_effects(self, effects):
+	def check_for_duration_only_effects(self, effect):
 		return self.base_mag_df.loc[self.base_mag_df['effect'] == effect, 'duration_only'].iloc[0]
 
 	def get_base_cost_for_effect(self, effect):
 		matching_row = self.base_mag_df[self.base_mag_df['effect'] == effect]
 		return matching_row['base_cost'].iloc[0]
 
-	def get_polarity_from_effects(self, effects):
-		if not isinstance(effects, (list,set)):
-			raise ValueError('effects must be a set or a list')
-		positive_effect_df = self.base_mag_df[self.base_mag_df['effect'].isin(effects) & (self.base_mag_df['polarity'] == 'positive')]
+	def get_polarity_from_effect(self, effect: str):
+		# Assuming self.base_mag_df contains the DataFrame
+		positive_effect_df = self.base_mag_df[(self.base_mag_df['effect'] == effect) & (self.base_mag_df['polarity'] == True)]
 		value = not positive_effect_df.empty
 		return value
+
 
 #THE ONLY MAGNITUDE ONLY EFFECT IS DISPEL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	#need these sort of "helper functions" to sort out the particulars to get the numbers right	
@@ -92,7 +90,7 @@ class AlchemyFactory:
 			elif instrument == 'retort_dur': raise ValueError('this shouldnt happen')
 
 		else:
-			print('neither magnitude_only nor duration_only')
+			# print('neither magnitude_only nor duration_only')
 			if instrument == 'calcinator': return 0.35
 			elif instrument == 'alembic': return 2
 			elif instrument == 'retort_mag': return 0.5
@@ -119,48 +117,51 @@ class AlchemyFactory:
 # THE DEFUALT CASE WHERE Base_Mag = [ (Effective_Alchemy + MortarPestle_Strength*25)/(Effect_Base_Cost/10 * 4) ] ^ (1/2.28)
 # IS what should be happening in most cases. the other cases are for permutations of instrument combinations. 
 	def generate_magnitude(self, effect, verbose=False):
-		positive_effect = self.get_polarity_from_effects(effect)
+		positive_effect = self.get_polarity_from_effect(effect)
 		magnitude_only = self.check_for_magnitude_only_effects(effect)
 		duration_only = self.check_for_duration_only_effects(effect)
 
-		calcinator = player.calcinator_level if player.calcinator_level is not None else False
-		alembic = player.alembic_level if player.alembic_level is not None else False
-		pestlemortar = player.pestlemortar_level if player.pestlemortar_level is not None else False
-		retort = player.retort_level if player.retort_level is not None else False
+		calcinator = self.player.calcinator_level if self.player.calcinator_level is not None else False
+		alembic = self.player.alembic_level if self.player.alembic_level is not None else False
+		pestlemortar = self.player.pestlemortar_level if self.player.pestlemortar_level is not None else False
+		retort = self.player.retort_level if self.player.retort_level is not None else False
 
 		#MASTER EQUATION DEFAULT CASE - Only when using Pestle and Calcinator???
 		try:
-			base_mag = (self.effective_alchemy + self.get_instrument_strength(player.pestlemortar_level)*25 / (4 * self.get_base_cost_for_effect(effect)/10)) ** (1/2.28)
+			#base_mag = (self.effective_alchemy + self.get_instrument_strength(self.player.pestlemortar_level)*25 / (4 * self.get_base_cost_for_effect(effect)/10)) ** (1/2.28)
+			base_cost = self.get_base_cost_for_effect(effect)
+			pestle_str = self.get_instrument_strength(self.player.pestlemortar_level)
+
+			base_mag = math.pow((self.effective_alchemy + pestle_str * 25) / (4 * base_cost / 10), 0.4385964912280702) if base_cost != 0 else 0
 
 			calc_fac = self.get_instrument_factor(effect, 'calcinator')
-			calc_str = self.get_instrument_strength(player.calcinator_level)
+			calc_str = self.get_instrument_strength(self.player.calcinator_level)
 
 			ret_mag_fac = self.get_instrument_factor(effect, 'retort_mag')
-			ret_str = self.get_instrument_strength(player.retort_level)
+			ret_str = self.get_instrument_strength(self.player.retort_level)
 
 			alem_fac = self.get_instrument_factor(effect, 'alembic')
-			alem_str = self.get_instrument_strength(player.alembic_level)
+			alem_str = self.get_instrument_strength(self.player.alembic_level)
 
 
 			if magnitude_only:
 				print(f'effect should be dispel:{effect}')
-				base_mag = ((effective_alchemy + mortarpestle_strength * 25) / (self.get_base_cost_for_effect(effect) / 10)) ** (1/1.28)
+				base_mag = ((effective_alchemy + self.get_instrument_strength(self.player.pestlemortar_level) * 25) / (self.get_base_cost_for_effect(effect) / 10)) ** (1/1.28)
 			elif duration_only:
 				return 1
 
-
 			magnitude =  base_mag * (
-	    		1 +
-	    		calc_fac * calc_str +
-	    		ret_mag_fac * ret_str -
-	    		alem_fac * alemb_str)
+				1 +
+				calc_fac * calc_str +
+				ret_mag_fac * ret_str -
+				alem_fac * alem_str)
 
 			if verbose:
 				print(f'effect {effect}')
 				print(f'base_mag:{base_mag}\ncalc_fac{calc_fac}\ncalc_str:{calc_fac}\nret_mag_fac:{ret_mag_fac}\nret_str:{ret_str}\nalem_fac:{alem_fac}\nalem_str:{alem_str}\n')
 				print(f'magnitude:{magnitude}')
 
-			return magnitude
+			return round(magnitude,0)
 
 		except Exception as e:
 			raise Exception(f'Something went wrong calculating effect magnitude because {e}')
@@ -168,7 +169,7 @@ class AlchemyFactory:
 
 
 	def generate_duration(self, effect):
-		positive_effect = self.get_polarity_from_effects(effect)
+		positive_effect = self.get_polarity_from_effect(effect)
 		magnitude_only = self.check_for_magnitude_only_effects(effect)
 		duration_only = self.check_for_duration_only_effects(effect)
 
@@ -231,9 +232,6 @@ class AlchemyFactory:
 			raise Exception(f"Incorrect Alchemy Level Given: {alchemy_level}. Must be a number between 1 and 100.")
 
 
-	def base_mag_for_effect(self,effect_name):
-		base_mag = ((self.effective_alchemy_level() + self.gen_ins_fac()*25)/(self.get/10 * 4)) ** (1/2.28)
-		return base_mag
 
 	def get_magicka_cost(self):
 		return self.effective_alchemy_level + self.calculate_ins_str('pestlemortar_level')*25 
@@ -253,14 +251,7 @@ class AlchemyFactory:
 
 
 
-player=Player(name='Test10')
-no_calc_player = Player(calcinator_level=None)
-Alchemy = AlchemyFactory(player=player)
-plant_df = Alchemy.plant_factory.get_plants('corn','carrot','mandrake_root')
-effects = Alchemy.find_common_effects_between_plants(plant_df)
-print(f'generate mag for {effects} @ lvl:{player.alchemy} alchemy with\n pestle:{player.pestlemortar_level}\n calc:{player.calcinator_level}\n alembic:{player.alembic_level}\n retort:{player.retort_level}')
-for effect in effects:
-	input(f'{effect} for {Alchemy.generate_magnitude(effect)}')
+
 
 # 1_positive_effects = ['resist_paralysis']
 # 2_positive_effects = ['resist_fire','resist_frost']

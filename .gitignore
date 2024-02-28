@@ -2,3 +2,4 @@
 !.gitignore
 old/
 images/
+**/__pycache__/
