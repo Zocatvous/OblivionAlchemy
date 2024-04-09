@@ -5,3 +5,9 @@ class ActionMask:
 		self.effect = effect
 		self.duration = duration
 		self.target = target
+
+
+
+class AttackMask(ActionMask):
+	def __init__():
+		self.weapon = ''

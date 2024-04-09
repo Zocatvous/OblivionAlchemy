@@ -9,6 +9,7 @@ from discord.ui import Button, View
 from dotenv import load_dotenv
 import os
 from oblivionalchemy.plant import PlantFactory
+from oblivionalchemy.models import Player
 from oblivionalchemy.helper import emojimap, pretty_string
 
 load_dotenv()
@@ -23,6 +24,14 @@ intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+
+class CombatPage(View):
+	def __init__(self)
+		self.opponent = Player.objects.order_by('?').first()
+		self.user = 
+		self.combat_factory = CombatFactory()
+
+		print(f'{self.user} accesed the combat page fighting {self.opponent}')
 
 class PickPlantButton(View):
 	def __init__(self, plant_factory):

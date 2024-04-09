@@ -9,7 +9,6 @@ from .helper import effects_dataframe_data
 pd.set_option('display.max_rows',500)
 
 
-
 def construct_df(path_to_csv):
 	ing_df = pd.read_csv(path_to_csv, delimiter='|')
 	#process all casing to snake
@@ -122,7 +121,10 @@ class AlchemyFactory:
 		duration_only = self.check_for_duration_only_effects(effect)
 
 		calcinator = self.player.calcinator_level if self.player.calcinator_level is not None else False
-		alembic = self.player.alembic_level if self.player.alembic_level is not None else False
+
+		if not positive_effect:
+			alembic = ''
+			alembic = self.player.alembic_level if self.player.alembic_level is not None else False
 		pestlemortar = self.player.pestlemortar_level if self.player.pestlemortar_level is not None else False
 		retort = self.player.retort_level if self.player.retort_level is not None else False
 
@@ -133,39 +135,74 @@ class AlchemyFactory:
 			pestle_str = self.get_instrument_strength(self.player.pestlemortar_level)
 
 			# base_mag = round(math.pow(((EFFECTIVE_ALCHEMY + PM_LEVEL[1] * 25) / (4 * BASE_COST / 10)), (1/2.28)))
-			base_mag = round(math.pow(((self.effective_alchemy + pestle_str * 25) / (4 * base_cost / 10)), (1/2.28)) if base_cost != 0 else 0
+			base_mag = round(math.pow(((self.effective_alchemy + pestle_str * 25) / (4 * base_cost / 10)), (1/2.28))) if base_cost != 0 else 0
 
-			calc_fac = self.get_instrument_factor(effect, 'calcinator')
+			if retort is None:
+				calc_fac = 1.4
+			else:
+				calc_fac = self.get_instrument_factor(effect, 'calcinator')
+
 			calc_str = self.get_instrument_strength(self.player.calcinator_level)
 
-			ret_mag_fac = self.get_instrument_factor(effect, 'retort_mag')
+			if positive_effect:
+				ret_mag_fac = self.get_instrument_factor(effect, 'retort_mag')
+			else:
+				ret_mag_fac = 0
+
 			ret_str = self.get_instrument_strength(self.player.retort_level)
 
-			alem_fac = self.get_instrument_factor(effect, 'alembic')
+			if positive_effect:
+				alem_fac = 0
+			else:
+				alem_fac = self.get_instrument_factor(effect, 'alembic')
+
 			alem_str = self.get_instrument_strength(self.player.alembic_level)
 
-
-			if magnitude_only:
-				if calcinator and retort:
-					base_mag = math.pow(((self.effective_alchemy + self.get_instrument_strength(self.player.calcinator_level) * 25) / (self.get_base_cost_for_effect(effect) / 10)), (1/1.28))
-				if (calcinator ^ retort):
-					base_mag = ((effective_alchemy + self.get_instrument_strength(self.player.pestlemortar_level) * 25) / (self.get_base_cost_for_effect(effect) / 10)) ** (1/1.28)
-
-			elif duration_only:
+			#check for duraction only
+			if duration_only:
 				return 1
 
-			magnitude =  base_mag * (
-				1 +
-				calc_fac * calc_str +
-				ret_mag_fac * ret_str -
-				alem_fac * alem_str)
+			#check for magnitude only
+			if magnitude_only:
+				if positive_effect:
+					if calcinator and retort:
+						magnitude = round(base_mag * (1 + 0.15 * calc_str * ret_str))
+						return magnitude
+					if (calcinator ^ retort):
+						magnitude = round(base_mag * (1 + 0.3 * calc_str + 0.5 * ret_str))
+						return magnitude
+				else:
+					if alembic:
+						magnitude = round(base_mag * (1 + 0.35 * calc_str - 2*alem_str))
+					else:
+						magnitude = round(base_mag*(1+0.35*calc_str))
+
+			#majority of cases
+			else:
+				#positive normal effects
+				if positive_effect:
+					if calcinator and retort:
+						magnitude = round(base_mag * (1 + 1.4 * calc_str + 0.5* ret_str))
+						return magnitude
+
+					if (calcinator ^ retort):
+						magnitude = round(base_mag * (1 + 0.35 * calc_str + 0.5 * ret_str))
+						return magnitude
+
+				#most negative effects
+				elif not positive_effect:
+					if alembic:
+						magnitude = round(base_mag * (1 + calc_fac*calc_str) * (1 + calc_fac*calc_str - alem_fac*alem_str))
+						return magnitude
+					elif not alembic:
+						magnitude = round(base_mag * (1 + 0.35*calc_str))
+						return magnitude
+
 
 			if verbose:
 				print(f'effect {effect}')
 				print(f'base_mag:{base_mag}\ncalc_fac{calc_fac}\ncalc_str:{calc_fac}\nret_mag_fac:{ret_mag_fac}\nret_str:{ret_str}\nalem_fac:{alem_fac}\nalem_str:{alem_str}\n')
 				print(f'magnitude:{magnitude}')
-
-			return round(magnitude)
 
 		except Exception as e:
 			raise Exception(f'Something went wrong calculating effect magnitude because {e}')

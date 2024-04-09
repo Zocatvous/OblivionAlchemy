@@ -1,3 +1,4 @@
+#THIS IS THE WRONG SETTINGS FILE THIS IS INSIDE THE OBLIVIONALCHEMY MODULE - USE THE OVERARCHING INTERCONNECTED SETTINGS FILE
 import os
 import sys
 
@@ -24,6 +25,7 @@ SHELL_PLUS_IMPORTS = [
 	('oblivionalchemy.helper', ('emojimap','pretty_string')),
 	('oblivionalchemy.action_mask', ('ActionMask')),
 	('oblivionalchemy.player', 'Player')
+	('oblivionalchemy.combat', 'CombatFactory')
 ]
 
 # settings.configure (

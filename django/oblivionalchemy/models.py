@@ -29,5 +29,7 @@ class Character(models.Model):
 	@property
 	def max_fatigue(self):
 		return self.strength + self.endurance + self.agility + self.willpower
+
+
 	
 

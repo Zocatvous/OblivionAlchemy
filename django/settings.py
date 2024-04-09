@@ -1,16 +1,45 @@
+import os
+import sys
+from django.conf import settings
+from django.core.management import execute_from_command_line
+
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
-    }
+			'default': {
+						'ENGINE': 'django.db.backends.sqlite3',
+						'NAME': 'mydatabase',
+									}
+			}
+
+INSTALLED_APPS = [
+'django_extensions',
+'oblivionalchemy',
+]
+
+
+
+DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': 'mydatabase',
+	}
 }
 
 INSTALLED_APPS = [
-    'inventory',
-    'oblivionalchemy',
-    'django_extensions'
+	'inventory',
+	'oblivionalchemy',
+	'django_extensions'
  ]
 
- SHELL_PLUS_PRE_IMPORTS = [('oblivionalchemy.character','character'),('inventory.models','')]
- SHELL_PLUS = 'ipython'
+SHELL_PLUS_IMPORTS = [
+('oblivionalchemy.models', ('Character')),
+('oblivionalchemy.oblivion_alchemy', ('AlchemyFactory')),
+('oblivionalchemy.plant', ('PlantFactory')),
+('oblivionalchemy.helper', ('emojimap','pretty_string')),
+('oblivionalchemy.action_mask', ('ActionMask')),
+('oblivionalchemy.player', 'Player'),
+('oblivionalchemy.combat', 'CombatFactory'),
+('inventory.models',''),
+ ]
+
+ #SHELL_PLUS = 'ipython'

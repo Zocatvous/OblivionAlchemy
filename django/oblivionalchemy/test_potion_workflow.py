@@ -1,5 +1,5 @@
 player=Player(name='Test50')
-# no_calc_player = Player(calcinator_level=None)
+no_calc_player = Player(name='Test50', calcinator_level=None, retort_level=None, alembic_level=None)
 Alchemy = AlchemyFactory(player=player)
 plant_factory = PlantFactory()
 plant_df = plant_factory.get_plants('corn', 'mandrake_root', 'carrot')
@@ -15,6 +15,8 @@ print(list_of_magnitudes)
 import math
 
 BASE_COST = 2
+BASE_COST = 
+
 level = 10
 for RET_LEVEL in [('Novice', 0.1), ('Apprentice',0.25), ('Journeyman',0.5),('Expert', 0.75),('Master',1)]:	
 	for CALC_LEVEL in [('Novice', 0.1), ('Apprentice',0.25), ('Journeyman',0.5),('Expert', 0.75),('Master',1)]:	
