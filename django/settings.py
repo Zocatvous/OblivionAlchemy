@@ -4,6 +4,9 @@ from django.conf import settings
 from django.core.management import execute_from_command_line
 
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 DATABASES = {
 			'default': {
 						'ENGINE': 'django.db.backends.sqlite3',

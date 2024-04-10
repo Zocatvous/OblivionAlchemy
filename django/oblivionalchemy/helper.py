@@ -1,3 +1,17 @@
+from colorama import Fore, Style
+
+def color_text(text, color):
+    color_map = {
+        'RED': Fore.RED,
+        'CYAN': Fore.CYAN,
+        'GREEN': Fore.GREEN,
+        'YELLOW': Fore.YELLOW,
+    }
+    
+    color = color_map.get(color.upper(), Fore.RESET)
+    return f'{color}{text}{Style.RESET_ALL}'
+
+
 emojimap = {
 'cure_poison':'cure',
 'cure_disease':'cure',

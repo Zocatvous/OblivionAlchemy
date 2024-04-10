@@ -25,8 +25,8 @@ class Player:
 		self.fatigue_used = 0
 		self.magicka_used = 0
 
-
-		self.mask_list= []
+		self.outgoing_mask_list= []
+		self.incoming_mask_list= []
 
 	@property
 	def current_fatigue(self):
@@ -46,13 +46,13 @@ class Player:
 
 
 	def __repr__(self):
-		return f"<({self.character_alias}) {self.name} HP:{self.current_health}/{self.character.max_hitpoints} MP:{self.current_magicka}/{self.character.max_magicka} FP:{self.current_fatigue}/{self.character.max_fatigue}>"
+		return f"<({self.character_alias}) HP:{self.current_health}/{self.character.max_hitpoints} MP:{self.current_magicka}/{self.character.max_magicka} FP:{self.current_fatigue}/{self.character.max_fatigue} ({self.name})>"
 
 	def get_available_strikes_with_weapon(self):
 		pass
 
-	def process_action_masks(*action_masks:list):
-		for ac_mask in self.mask_list:
+	def process_action_masks(self,*action_masks:list):
+		for ac_mask in self.incoming_mask_list:
 			#check_for_damage
 			if ac_mask.damage:
 				damage_per_tick = ac_mask.damage / ac_mask.duration
