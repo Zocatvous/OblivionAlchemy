@@ -7,7 +7,6 @@ class ActionMask:
 		self.target = target
 
 
-
 class AttackMask(ActionMask):
 	def __init__():
 		self.weapon = ''

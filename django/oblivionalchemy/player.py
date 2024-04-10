@@ -6,12 +6,12 @@ from oblivionalchemy.models import Character
 
 
 class Player:
-	def __init__(self, name='Test10',
+	def __init__(self, character_alias=None, name='Test10',
 		alembic_level='novice',
 		calcinator_level='novice',
 		pestlemortar_level='novice',
 		retort_level='novice'):
-
+		self.character_alias = character_alias
 		self.character = Character.objects.get(name=name)
 		self.name=name
 		self.alembic_level=alembic_level
@@ -46,16 +46,17 @@ class Player:
 
 
 	def __repr__(self):
-		return f"<({self.name} HP:{self.current_health}/{self.character.max_hitpoints} MP:{self.current_magicka}/{self.character.max_magicka} FP:{self.current_fatigue}/{self.character.max_fatigue})>"
+		return f"<({self.character_alias}) {self.name} HP:{self.current_health}/{self.character.max_hitpoints} MP:{self.current_magicka}/{self.character.max_magicka} FP:{self.current_fatigue}/{self.character.max_fatigue}>"
 
 	def get_available_strikes_with_weapon(self):
 		pass
 
-	def _process_mask(*action_masks:list):
+	def process_action_masks(*action_masks:list):
 		for ac_mask in self.mask_list:
 			#check_for_damage
 			if ac_mask.damage:
-				print(f'pow. {ac_mask.damage}')
+				damage_per_tick = ac_mask.damage / ac_mask.duration
+				self.hitpoints_used += damage_per_tick
 
 	def drink_potion(*potions:str):
 		potion_active_effects = []

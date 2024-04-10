@@ -39,7 +39,7 @@ SHELL_PLUS_IMPORTS = [
 ('oblivionalchemy.action_mask', ('ActionMask')),
 ('oblivionalchemy.player', 'Player'),
 ('oblivionalchemy.combat', 'CombatFactory'),
-('inventory.models',''),
+# ('inventory.models',''),
  ]
 
  #SHELL_PLUS = 'ipython'

@@ -1,27 +1,38 @@
 from typing import List
-
-from potion import PotionFactory
-from player import Player
-from action_mask import ActionMask
+from .player import Player
+from .helper import pretty_string
+from .action_mask import ActionMask
 import random
 
 class CombatFactory:
-	def __init__(self, *characters:List[Player]):
-		self.baddies = pd.read_csv('./resources/csv/baddies.csv')
+	def __init__(self, *players:List[Player]):
+		# self.baddies = pd.read_csv('./resources/csv/baddies.csv')
 		self.attack_mask_list=[]
-		self.characters = characters
+		self.players = players
 
+	def __repr__(self):
+		return f"CombatFactory({', '.join(x.character_alias for x in self.players)})"
 
+	def one_player_alive(self):
+		for player in self.players:
+			if player.current_health <= 0:
+				return True
+		return False
 
 # I need to create an object or workflow that allows for 
-	def combat(self):
-		turn_order = sorted(characters, key=lambda player: player.speed)
-		player2 = turn_order[1]
-		targets = [target for target in turn_order if target != player]
-		for player in turn_order:
-			#this is setup to only target the first target in the list and will need to be refactored for multiway combat
-			self.attack(player, ActionMask(effect='damage_health', target=targets[0] , damage=player.strength, duration=0))
-			player.process_action_masks()
+	def combat(self, verbose=False):
+		turn_order = sorted(self.players, key=lambda player: player.character.speed, reverse=True)
+		print(turn_order)
+		while self.one_player_alive():
+			for player in turn_order:
+				targets = [target for target in turn_order if target != player]
+				#this is setup to only target the first target in the list and will need to be refactored for multiway combat
+				target=targets[0]
+				action_mask = ActionMask(effect='damage_health', target=target , damage=player.character.strength, duration=1)
+				self.attack(player,target,action_mask)
+				player.process_action_masks()
+				if verbose:
+					print(f'{player.name} {pretty_string(action_mask.effect)} for {action_mask.damage} on {targets[0]}')
 
 
 	def run_combat(self, *fighters: str):
@@ -37,14 +48,11 @@ class CombatFactory:
 		
 
 	def attack(self, attacker, target, action_mask:ActionMask):
-		attacker.action_mask,append(action_mask)
+		attacker.mask_list.append(action_mask)
 
+player1 = Player(name='Test10', character_alias='Clint')
+player2 = Player(name='Test100', character_alias='Natasha')
 
-
-
-
-
-player1 = Player(name='BOB_Player_1')
-player2 = Player(name='ORC1')
 
 combat_factory = CombatFactory(player1,player2)
+combat_factory.combat(verbose=True)
