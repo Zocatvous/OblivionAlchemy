@@ -1,15 +1,20 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+import django
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+os.environ.setdefault('DJANGO_SETTINGS_MODULE','settings')
+django.setup()
+
+from dotenv import load_dotenv
 import discord
 from discord.ext import commands
 from discord import Intents, utils, ButtonStyle, Color, Embed
-from discord.ui import Button, View
-from dotenv import load_dotenv
-import os
+from discord.ui import Button, View, Modal
+
 from oblivionalchemy.plant import PlantFactory
-from oblivionalchemy.models import Player
+from oblivionalchemy.combat import CombatFactory
+from oblivionalchemy.models import Character
 from oblivionalchemy.helper import emojimap, pretty_string
 
 load_dotenv()
@@ -24,11 +29,23 @@ intents.guild_messages = True  # Enable guild messages
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+class CharacterNameChangeModal(Modal):
+	def __init__(self, character, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.character = character
+		self.title = 'Change Your Character Name'
+		self.add_item(TextInput(label='New Character Name', placeholder='Enter new name here...', min_length=2, max_length=100))
+
+	async def on_submit(self, interaction):
+		new_name = self.children[0].value
+		self.character.name = new_name
+		self.character.save()
+		await interaction.response.send_message(f'Character name updated to {new_name}!', ephemeral=True)
 
 class CombatPage(View):
-	def __init__(self)
-		self.opponent = Player.objects.order_by('?').first()
-		self.user = 
+	def __init__(self, user):
+		self.opponent = 'NAY!'
+		self.user = user
 		self.combat_factory = CombatFactory()
 
 		print(f'{self.user} accesed the combat page fighting {self.opponent}')
@@ -51,11 +68,12 @@ class PickPlantButton(View):
 		await interaction.response.send_message(embed=embed, view=self)
 
 
+
 class HomePage(View):
-	def __init__(self, user_stats, inventory):
+	def __init__(self, user):
 		super().__init__(timeout=None)  # Optional: Set a timeout for the view
-		self.user_stats = user_stats
-		self.inventory = inventory
+		self.user = user
+
 
 	@discord.ui.button(label="Explore", style=discord.ButtonStyle.green, custom_id="explore")
 	async def explore(self, interaction: discord.Interaction, button: Button):
@@ -67,7 +85,6 @@ class HomePage(View):
 		# Handle the Alchemy action
 		await interaction.response.send_message("Time to brew some potions!", ephemeral=True)
 
-
 	@discord.ui.button(label="Stats", style=discord.ButtonStyle.blurple, custom_id="alchemy")
 	async def stats(self, interaction: discord.Interaction, button: Button):
 		# Handle the Alchemy action
@@ -78,12 +95,28 @@ class HomePage(View):
 		# Handle the Travel action
 		await interaction.response.send_message("Off to new destinations!", ephemeral=True)
 
+	async def send_initial_message(self, ctx, channel):
+		embed = discord.Embed(title="Welcome to Cyrodiil", description="Select an option below to get started.", color=0xFF6347)
+		embed.set_image(url="https://imgur.com/a/PiObLjY")  # Replace with your actual image URL
+		await channel.send(embed=embed, view=self)
 
 
+@bot.command(name="home", description="Displays the character sheet of your character in Oblivion After you have already created your guy")
+async def home(ctx):
+	discord_user_id = str(ctx.author.id)  # Discord ID as a string
 
+	user, created = User.objects.get_or_create(
+		discord_id=discord_user_id,
+		defaults={'username': ctx.author.name}
+	)
 
+	if created:
+		character = Character.objects.create(name=f"New Character for {ctx.author.name}")
+		user.character = character
+		user.save()
 
-
+	view = HomePageView(user=user)
+	await ctx.send(f"Welcome {ctx.author.display_name}! Manage your character and inventory here.", view=view)
 
 
 @bot.command(aliases=['emojis'])
@@ -122,12 +155,25 @@ async def pick_random_plant(ctx):
 	view = PickPlantButton(plant_factory=plant_factory)
 
 	await ctx.send(view=view)
-	# except Exception as e:
-	# 	print(e)
-	# 	pass
-		#await message.channel.send(embed=embed)
 
-# client.run(bot_token)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 bot.run(bot_token)
 
 

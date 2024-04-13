@@ -37,8 +37,7 @@ class CombatFactory:
 
 				if verbose:
 					print(f"{color_text(player.character_alias,'green')} hit with {color_text(pretty_string(action_mask.effect),'cyan')} for {color_text(action_mask.damage, 'red')} on {color_text(target,'yellow')}")
-				#print(f"Status: {target} {player}")
-				#print(f"{target.character_alias} has {target.current_health} after {player.character_alias} attack")
+
 				if self.is_any_player_dead()==True:
 					print(f'combat over {player.character_alias} wins')
 					combat_continues=False
@@ -64,10 +63,3 @@ class CombatFactory:
 			print(f"masking {target.character_alias} with {action_mask.damage}")
 		attacker.outgoing_mask_list.append(action_mask)
 		target.incoming_mask_list.append(action_mask)
-
-
-# player1 = Player(name='Test10', character_alias='Clint')
-# player2 = Player(name='Test100', character_alias='Natasha')
-
-# combat_factory = CombatFactory(player1,player2)
-# combat_factory.combat(verbose=True)

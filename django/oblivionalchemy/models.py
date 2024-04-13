@@ -1,6 +1,9 @@
 from django.db import models
+from discordbot.models import User
+
 
 class Character(models.Model):
+	user = models.ForeignKey('discordbot.User', on_delete=models.SET_NULL, null=True, related_name="characters")
 	name = models.CharField(max_length=40)  
 	strength = models.IntegerField(default=10)
 	endurance = models.IntegerField(default=10)
@@ -14,6 +17,7 @@ class Character(models.Model):
 	survival = models.IntegerField(default=10)
 	blade = models.IntegerField(default=10)
 	marksman = models.IntegerField(default=10)
+	inventory_instance = models.OneToOneField('inventory.InventoryInstance', on_delete=models.CASCADE, related_name='character', default=None, null=True, blank=True)
 
 	def __repr__(self):
 		return f'<Character {self.name} HP:{self.max_hitpoints} MP:{self.max_magicka} FP:{self.max_fatigue}>' 
@@ -29,6 +33,12 @@ class Character(models.Model):
 	@property
 	def max_fatigue(self):
 		return self.strength + self.endurance + self.agility + self.willpower
+
+	def save(self, *args, **kwargs):
+		is_new = self._state.adding
+		super().save(*args, **kwargs)
+		if is_new:
+			InventoryInstance.objects.create(character_name=self)
 
 
 	
