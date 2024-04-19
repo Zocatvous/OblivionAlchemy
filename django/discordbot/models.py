@@ -10,8 +10,6 @@ class User(models.Model):
 		related_name='discord_user'
 	)
 
-
-
 	def __str__(self):
 		return f'<User:{self.discord_id} {self.username}>'
 

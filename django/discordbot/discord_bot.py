@@ -1,10 +1,14 @@
 import sys
 import os
 import django
+import threading
+from queue import Queue
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','settings')
 django.setup()
+
+#from asgiref.sync import sync_to_async
 
 from dotenv import load_dotenv
 import discord
@@ -16,6 +20,8 @@ from oblivionalchemy.plant import PlantFactory
 from oblivionalchemy.combat import CombatFactory
 from oblivionalchemy.models import Character
 from oblivionalchemy.helper import emojimap, pretty_string
+
+from discordbot.models import User
 
 load_dotenv()
 bot_token = os.getenv('DISCORD_BOT_TOKEN')
@@ -100,22 +106,52 @@ class HomePage(View):
 		embed.set_image(url="https://imgur.com/a/PiObLjY")  # Replace with your actual image URL
 		await channel.send(embed=embed, view=self)
 
+def get_or_create_user(discord_user_id, author_name):
+	user_instance, created = User.objects.get_or_create(
+		discord_id=discord_user_id,
+		defaults={'username': author_name}
+	)
+
+	if created:
+		character = Character.objects.create(name=f"New Character for {author_name}")
+		user_instance.character = character
+		user_instance.save()
+
+	return user_instance, created
+
+
 
 @bot.command(name="home", description="Displays the character sheet of your character in Oblivion After you have already created your guy")
 async def home(ctx):
 	discord_user_id = str(ctx.author.id)  # Discord ID as a string
+	author_name = ctx.author.name
 
-	user, created = User.objects.get_or_create(
+	# Start a new thread to perform the database operation
+	thread = threading.Thread(target=get_or_create_user, args=(discord_user_id, author_name))
+	thread.start()
+	thread.join()
+	user_instance, created = thread.result()
+
+	view = HomePageView(user=user_instance)
+	await ctx.send(f"Welcome {ctx.author.display_name}! Manage your character and inventory here.", view=view)
+
+
+#potential legacy home method
+
+
+@bot.command(name="home", description="Displays the character sheet of your character in Oblivion After you have already created your guy")
+async def home_async(ctx):
+	user_instance, created = await sync_to_async(User.objects.get_or_create(
 		discord_id=discord_user_id,
 		defaults={'username': ctx.author.name}
-	)
+	))
 
 	if created:
 		character = Character.objects.create(name=f"New Character for {ctx.author.name}")
-		user.character = character
-		user.save()
+		user_instance.character = character
+		user_instance.save()
 
-	view = HomePageView(user=user)
+	view = HomePageView(user=user_instance)
 	await ctx.send(f"Welcome {ctx.author.display_name}! Manage your character and inventory here.", view=view)
 
 

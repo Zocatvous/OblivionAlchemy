@@ -42,10 +42,7 @@ DATABASES = {
 									}
 			}
 
-INSTALLED_APPS = [
-'django_extensions',
-'oblivionalchemy',
-]
+
 
 
 
@@ -63,11 +60,14 @@ INSTALLED_APPS = [
 	'django.contrib.sessions',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
+    'django_extensions',
 	# Add your custom apps here
 	'inventory',
 	'discordbot',
 	'oblivionalchemy',
 ]
+
+SHELL_PLUS = 'ipython'
 
 SHELL_PLUS_IMPORTS = [
 ('oblivionalchemy.models', ('Character')),
