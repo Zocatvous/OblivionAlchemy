@@ -1,8 +1,47 @@
 from django.core.management.base import BaseCommand
-from oblivionalchemy.models import Character
-from oblivionalchemy.utils.create_test_characters import create_test_characters
-from django.db import connection
+
+#from oblivionalchemy.utils.create_test_characters import create_test_characters
+from django.db import connection, transaction
 from django.conf import settings
+
+from oblivionalchemy.models import Character, InventoryInstance, DiscordUser
+from django.db.models import IntegerField
+import uuid
+
+def create_test_characters(start=10, limit=200, increment=10, truncate=False):
+	if truncate:
+		print('Truncating character database...')
+		with transaction.atomic():
+			InventoryInstance.objects.all().delete()
+			DiscordUser.objects.all().delete()
+			Character.objects.all().delete()
+
+
+	print(f'Creating records {start} through {limit}..')
+
+	for i in range(start, limit+1, increment):
+		name = f'Test{i}'
+		field_values = {}
+		for field in Character._meta.get_fields():
+			if not field.auto_created and not field.is_relation and field.name != 'id':
+				if isinstance(field, IntegerField):
+					field_values[field.name] = i
+				elif field.name == 'name':
+					field_values[field.name] = f'{name}'
+				elif field.name == 'user':
+					field_values[field.name] = 'placeholder_{}'.format(uuid.uuid1())
+
+		character = Character.objects.create(**field_values)
+		discord_user = DiscordUser.objects.create(discord_id='TestUser{}'.format(i), character=character)
+		character.user = discord_user
+		inventory = InventoryInstance.objects.create(character_name=character)
+		character.inventory_instance = inventory
+		character.save()
+
+		print('Creating record {}\r'.format(i), end='\r')
+
+		# character = Character.objects.create(user=discord_user, **field_values)
+
 
 class Command(BaseCommand):
 	help = 'Deletes and recreates the Test Character data'

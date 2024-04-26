@@ -1,4 +1,5 @@
 from oblivionalchemy.models import Character
+from inventory.models import InventoryInstance
 from django.db.models import IntegerField
 
 def create_test_characters(start=10, limit=200, increment=10, truncate=False):

@@ -62,15 +62,15 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
     'django_extensions',
 	# Add your custom apps here
-	'inventory',
-	'discordbot',
+	# 'inventory',
+	# 'discordbot',
 	'oblivionalchemy',
 ]
 
 SHELL_PLUS = 'ipython'
 
 SHELL_PLUS_IMPORTS = [
-('oblivionalchemy.models', ('Character')),
+('oblivionalchemy.models', ('Character', 'DiscordUser', 'InventoryInstance', 'InventoryItem')),
 ('oblivionalchemy.oblivion_alchemy', ('AlchemyFactory')),
 ('oblivionalchemy.plant', ('PlantFactory')),
 ('oblivionalchemy.helper', ('emojimap','pretty_string')),
